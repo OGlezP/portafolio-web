@@ -85,7 +85,7 @@ function Projects(props) {
 
 
     return (
-        <Container id="section" fluid={true} >
+        <div id="section-projects" >
             <div className="title-container">
                 <div className="back-img-projects style-bk-img"></div>
                 <div className="txt-wrapper">
@@ -93,7 +93,7 @@ function Projects(props) {
                     <p id="title-section-text">Here are some works as a freelance and some excersice at freecodecamp.org</p>
                 </div>
             </div>
-            <div className="projects-contenedor">
+            <div className="projects">
                 <Row className="justify-content-md-center no-gutters">
                     <Column md='3' className="columna text-center">
                         <div className='hover-layer' onMouseOver={hoverEffect} onMouseLeave={hoverEffect}></div>
@@ -146,7 +146,9 @@ function Projects(props) {
                         </div>
                     </Column>
                 </Row>
-                <Container  className="text-center school-project-wrapper">
+                
+            </div>
+            <Container  className="text-center school-project-wrapper">
                 <div>At FreeCodeCamp.org</div>
                 <Row >
                     {trail.map((props, index) => {
@@ -165,9 +167,7 @@ function Projects(props) {
                     })}
                 </Row>
             </Container>
-            </div>
-            
-        </Container>
+        </div>
     );
 }
 

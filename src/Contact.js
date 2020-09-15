@@ -22,7 +22,7 @@ function Contact(props) {
     }
 
     return (
-        <Container id="section" fluid={true}>
+        <div id="section-contact">
             <div className="title-container">
             <div className="back-img-contact style-bk-img"></div>
                 <div className="txt-wrapper">
@@ -60,7 +60,7 @@ function Contact(props) {
                     </div>
                 </div>
             </Container>
-        </Container>
+        </div>
     );
 }
 

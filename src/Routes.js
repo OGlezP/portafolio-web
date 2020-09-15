@@ -1,19 +1,13 @@
-import React, { useContext } from 'react';
-import ReactDOM from 'react';
-import { Route, Switch, Router } from 'react-router';
+import React from 'react';
+import { Route, Switch } from 'react-router';
 import { useLocation } from 'react-router-dom';
-// import Container from 'react-bootstrap/Container'
-// import Navbar from 'react-bootstrap/Navbar';
-// import Nav from 'react-bootstrap/Nav';
-// import logo from './logo.svg';
+import Container from 'react-bootstrap/Container';
 import './App.css';
 import Home from './Home';
 import Projects from './Projects';
-import About from './About';
+// import About from './About';
 import Contact from './Contact';
 import Footer from './components/Footer';
-
-// import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { useTransition, animated } from 'react-spring';
 
 function Routes(propss) {
@@ -48,6 +42,7 @@ function Routes(propss) {
     <div> 
       {transitions.map(({ item, props, key }) => (
         <animated.div key={key} style={props}>
+          <div id="section-wrapper">
             <Switch location={item}>
               <Route path="/" exact render={() => 
                 < Home first={propss.first} />
@@ -72,6 +67,7 @@ function Routes(propss) {
                 />  
               }/>
             </Switch>
+            </div>
           <Footer id="foot" />
         </animated.div>
 

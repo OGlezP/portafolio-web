@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useLocation } from 'react-router-dom';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 import {
   Link
 } from "react-router-dom";
+// import Container from 'react-bootstrap/Container'
+import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import '../App.css';
 
@@ -43,6 +45,12 @@ function NavElement(props) {
   }
 
   return (
+    <Navbar className='border-bottom transparent' expand="lg">
+              <Navbar.Brand>Orlando Glez</Navbar.Brand>
+              <Navbar.Toggle aria-controls="navbarNav" />     
+              <Navbar.Collapse id="navbarNav">
+                
+              
     <Nav className="ml-auto">
         <div className="nav-link-wrapper">
             <Link 
@@ -88,6 +96,8 @@ function NavElement(props) {
             <div className={currentLocation === "/Contact" ? 'menu-link-underline active-link' : 'menu-link-underline'}></div>
         </div>
     </Nav>
+    </Navbar.Collapse>
+            </Navbar>
   );
 }
 
