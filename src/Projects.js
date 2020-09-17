@@ -20,14 +20,8 @@ function Projects(props) {
     async function eachImgDelay(worksArray) {
         for(var x= 0; x < worksArray.length; x ++) {
             worksArray[x].classList.remove('hidden');
-            await delay(200);
+            await delay(300);
         }
-    }
-
-
-    function imgAppearEffect(worksArray) {
-        worksArray.forEach(img => { img.classList.add('hidden') });
-        setTimeout(() => { eachImgDelay(worksArray) }, 800);
     }
 
 
@@ -60,7 +54,10 @@ function Projects(props) {
         const handleScroll = () => {       
             if(!itemsLoade) {
                 itemsLoade = true;
-                fetchData();
+                setTimeout(() => {
+                    fetchData();
+
+                }, 100);
             }
         }
         window.addEventListener("scroll", handleScroll, { passive: true });
@@ -72,15 +69,15 @@ function Projects(props) {
         let worksArray = Array.from(document.querySelectorAll('.columna'));
         if(worksArray) {
             if ((prevURL === thisURL && props.first) || !firstClickOnMenu) {
-                imgAppearEffect(worksArray);
+                setTimeout(() => { eachImgDelay(worksArray) }, 1000);
             } 
         }
      }, []);
 
 
-    const trail = useTrail(items.length, {    ////handles fade in effect on school projects
+    const trail =  useTrail(items.length, {    ////handles fade in effect on school projects
         from: {opacity: 0},
-        to: {opacity: 1, transition: '.3s'  }
+        to: {opacity: 1},
     })
 
 
@@ -95,7 +92,7 @@ function Projects(props) {
             </div>
             <div className="projects">
                 <Row className="justify-content-md-center no-gutters">
-                    <Column md='3' className="columna text-center">
+                    <Column md='3' className="columna text-center hidden">
                         <div className='hover-layer' onMouseOver={hoverEffect} onMouseLeave={hoverEffect}></div>
                         <div className="project-info">
                             <div className="img">
@@ -112,7 +109,7 @@ function Projects(props) {
                             
                         </div>
                     </Column>
-                    <Column md='3' className="columna text-center">
+                    <Column md='3' className="columna text-center hidden">
                         <div className='hover-layer' onMouseOver={hoverEffect} onMouseLeave={hoverEffect}></div>
                         <div  className="project-info">
                             <div className="img">
@@ -129,7 +126,7 @@ function Projects(props) {
                         </div>
                     </Column>
 
-                    <Column md='3' className="columna text-center">
+                    <Column md='3' className="columna text-center hidden">
                         <div className='hover-layer' onMouseOver={hoverEffect} onMouseLeave={hoverEffect}></div>
                         <div  className="project-info">
                             <div className="img">
@@ -149,20 +146,18 @@ function Projects(props) {
                 
             </div>
             <Container  className="text-center school-project-wrapper">
-                <div>At FreeCodeCamp.org</div>
+                <h4>At FreeCodeCamp.org</h4>
                 <Row >
                     {trail.map((props, index) => {
                         return (
-                            // <Column>
-                                <animated.div
-                                key={items[index].id}
-                                style={props}
-                                className="col-sm-3 box"
-                                >
-                                    <img src={items[index].src} alt={items[index].title}></img>
-                                    <div>{items[index].title}</div>    
-                                </animated.div>
-                            // </Column>
+                            <animated.div
+                            key={items[index].id}
+                            style={props}
+                            className="col-sm-3"
+                            >
+                                <img src={items[index].src} alt={items[index].title}></img>
+                                <div>{items[index].title}</div>    
+                            </animated.div>
                         )
                     })}
                 </Row>

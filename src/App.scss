@@ -140,7 +140,7 @@ html {
 
 #row-cont-home {
   background-color: rgb(0, 0, 0);
-  background-image: url('/img/oglez-background.jpg');
+  // background-image: url('/img/oglez-background.jpg');
   background-size: 85%;
   background-position: center;
   background-repeat: no-repeat;
@@ -257,14 +257,13 @@ html {
 #section-projects {
   .projects {
     max-width: 1700px;
-    padding: 1rem;
     position: relative;
     margin: 0 auto;
     top: -100px;
     .row {
-      .hidden { 
+      .hidden { /*fade-in column effect*/
         opacity: 0;
-        transform: translateY(10%);
+        transform: translateY(20%);
         // transform: scale(0);
       }  
       .columna {
@@ -272,19 +271,19 @@ html {
         -moz-box-shadow: -2px -2px 13px 1px rgba(0,0,0,0.75);
         box-shadow: -2px -2px 13px 1px rgba(0,0,0,0.75);
         height: auto;
-        margin: 20px;
-        background-color: #daa4a0;
-        transition: all .6s;
+        margin: 10px;
+        background-color: #ffffff;
+        transition: all .7s;
         // transition-timing-function: cubic-bezier(0, 0.97, 0.04, 1.15);
         position: relative;
         .project-info {
-          color: #fff;
-          font-size: 1.7rem;
+          color: rgb(180, 128, 128);
+          font-size: 17px;
           font-weight: 500;
           .img {
             height: auto;
             overflow: hidden;
-            border: rgb(252, 188, 188) solid 1px;
+            border: rgb(255, 235, 226) solid 1px;
             img {
               width: 100%;
               transition: .5s;
@@ -294,7 +293,6 @@ html {
             margin-top: 20px; 
             .svg-inline--fa {
               position: relative;
-              top: 1px;
             }
           }
           .project-tech {
@@ -312,30 +310,31 @@ html {
         }
         .hover-image {
           transform: scale(1.1);
-          transition: .5s;
         }
       }
     }
   }
   .school-project-wrapper {
-    min-height: 200px;
+    // background-color: wheat;
     width: 100%;
     color: rgb(85, 85, 85);
     opacity: 1;
-    padding: 30px 0;
+    padding-bottom: 50px;
     margin: 0 auto;
-    transition: all 2s;
-    div {
-      font-size: 30px;
+    h4 {
+      font-size: 25px;
+      margin-bottom: 5rem;
     }
     .col-sm-3 { 
-      padding: 5px;
+    // background-color: rgb(172, 156, 128);
+    padding: 5px;
+    transition: all .6s;
       img {
-        width: 70%;
+        width: 90%;
         height: auto;
       }
       div {
-        font-size: 17px;
+        font-size: 15px;
       }
     }
   }

@@ -165,7 +165,6 @@ html {
 
 #row-cont-home {
   background-color: black;
-  background-image: url("/img/oglez-background.jpg");
   background-size: 85%;
   background-position: center;
   background-repeat: no-repeat;
@@ -291,15 +290,15 @@ html {
 
 #section-projects .projects {
   max-width: 1700px;
-  padding: 1rem;
   position: relative;
   margin: 0 auto;
   top: -100px;
 }
 
 #section-projects .projects .row .hidden {
+  /*fade-in column effect*/
   opacity: 0;
-  transform: translateY(10%);
+  transform: translateY(20%);
 }
 
 #section-projects .projects .row .columna {
@@ -307,22 +306,22 @@ html {
   -moz-box-shadow: -2px -2px 13px 1px rgba(0, 0, 0, 0.75);
   box-shadow: -2px -2px 13px 1px rgba(0, 0, 0, 0.75);
   height: auto;
-  margin: 20px;
-  background-color: #daa4a0;
-  transition: all .6s;
+  margin: 10px;
+  background-color: #ffffff;
+  transition: all .7s;
   position: relative;
 }
 
 #section-projects .projects .row .columna .project-info {
-  color: #fff;
-  font-size: 1.7rem;
+  color: #b48080;
+  font-size: 17px;
   font-weight: 500;
 }
 
 #section-projects .projects .row .columna .project-info .img {
   height: auto;
   overflow: hidden;
-  border: #fcbcbc solid 1px;
+  border: #ffebe2 solid 1px;
 }
 
 #section-projects .projects .row .columna .project-info .img img {
@@ -336,7 +335,6 @@ html {
 
 #section-projects .projects .row .columna .project-info .project-web .svg-inline--fa {
   position: relative;
-  top: 1px;
 }
 
 #section-projects .projects .row .columna .project-info .project-tech {
@@ -355,34 +353,33 @@ html {
 
 #section-projects .projects .row .columna .hover-image {
   transform: scale(1.1);
-  transition: .5s;
 }
 
 #section-projects .school-project-wrapper {
-  min-height: 200px;
   width: 100%;
   color: #555555;
   opacity: 1;
-  padding: 30px 0;
+  padding-bottom: 50px;
   margin: 0 auto;
-  transition: all 2s;
 }
 
-#section-projects .school-project-wrapper div {
-  font-size: 30px;
+#section-projects .school-project-wrapper h4 {
+  font-size: 25px;
+  margin-bottom: 5rem;
 }
 
 #section-projects .school-project-wrapper .col-sm-3 {
   padding: 5px;
+  transition: all .6s;
 }
 
 #section-projects .school-project-wrapper .col-sm-3 img {
-  width: 70%;
+  width: 90%;
   height: auto;
 }
 
 #section-projects .school-project-wrapper .col-sm-3 div {
-  font-size: 17px;
+  font-size: 15px;
 }
 
 /***********projects page*********/
