@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation } from 'react-router-dom';
 // import ReactDOM from 'react-dom';
 import {
@@ -8,8 +8,6 @@ import {
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import '../App.css';
-
-
 
 // function updatePagesFirstRender() {
 //   setTimeout(() => {
@@ -28,9 +26,10 @@ import '../App.css';
 //   }, 800);
 // }
 
-function NavElement(props) {
+function NavElement({firstProjects, firstContact}) {
   let location = useLocation();
   let currentLocation = location.pathname;
+  // let [contactClick, setContactClick] = useState(false);
 
   function mouseOverMenuLink(e) {
     e.preventDefault();  
@@ -43,6 +42,17 @@ function NavElement(props) {
       currentLink.nextElementSibling.classList.remove('transform-underline');
     }
   }
+
+  useEffect(() => {
+    // console.log('contact click', contactClick);
+  })
+
+  // function updateFirstState() {
+  //   console.log('clicked projects link')
+  //   setContactClick('hola');
+
+  //   firstProjects(contactClick);
+  // }
 
   return (
     <Navbar className='border-bottom transparent' expand="lg">
@@ -66,7 +76,9 @@ function NavElement(props) {
         <div className="nav-link-wrapper">
             <Link  
               className='nav-link' 
-              to="/Projects"  
+              to="/Projects" 
+              
+              onClick={() => setTimeout(() => {firstProjects(true)}, 200)}
               onMouseOver={currentLocation === '/Projects' ? (() => {}) : mouseOverMenuLink} 
               onMouseLeave={currentLocation === '/Projects' ? (() => {}) : mouseOverMenuLink}>
                 Projects
@@ -74,23 +86,14 @@ function NavElement(props) {
             <div className={currentLocation === "/Projects" ? 'menu-link-underline active-link' : 'menu-link-underline'}></div>
         </div>
 
-        {/* <div className="nav-link-wrapper">
-            <Link  
-              className='nav-link'}
-              to="/About"  
-              onMouseOver={currentLocation == '/About' ? (() => {}) : mouseOverMenuLink} 
-              onMouseLeave={currentLocation == '/About' ? (() => {}) : mouseOverMenuLink}>
-                About
-            </Link>
-            <hr className={currentLocation == "/About" ? 'menu-link-underline' : 'menu-link-underline transform-underline'}></hr>
-        </div> */}
-
         <div className="nav-link-wrapper">
             <Link  
-              className='nav-link'
-              to="/Contact"  
-              onMouseOver={currentLocation === '/Contact' ? (() => {}) : mouseOverMenuLink} 
-              onMouseLeave={currentLocation === '/Contact' ? (() => {}) : mouseOverMenuLink}>
+            className='nav-link'
+            to="/Contact"  
+
+            onClick={() => setTimeout(() => {firstContact(true)}, 200)}
+            onMouseOver={currentLocation === '/Contact' ? (() => {}) : mouseOverMenuLink} 
+            onMouseLeave={currentLocation === '/Contact' ? (() => {}) : mouseOverMenuLink}>
                 Contact
             </Link>
             <div className={currentLocation === "/Contact" ? 'menu-link-underline active-link' : 'menu-link-underline'}></div>

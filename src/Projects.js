@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Container from "react-bootstrap/container";
 import Row from "react-bootstrap/Row";
 import Column from "react-bootstrap/Col";
@@ -7,47 +7,48 @@ import { faGlobe } from "@fortawesome/free-solid-svg-icons";
 import { faCode } from "@fortawesome/free-solid-svg-icons";
 import { animated, useTrail } from 'react-spring';
 
-
 function Projects(props) {  
-    let firstClickOnMenu =  props.clickedMenuProject;
     let thisURL = props.currentURL;  
-    let prevURL = props.previousURL;  
+    let prevURL = props.previousURL; 
     const url = "/school-projects.json";
     const [error, setError] = useState(null);
     const [items, setItems] = useState([]);
+    const [toggle, set] = useState(true);
     const delay = ms => new Promise(res => setTimeout(res, ms));
 
-    async function eachImgDelay(worksArray) {
+        // function imgAppearEffect(worksArray) {
+    //     worksArray.forEach(img => { img.classList.add('hidden') });
+    //     setTimeout(() => { eachImgDelay(worksArray, 300) }, 600);
+    // }
+
+
+    async function eachImgDelay(worksArray, delays) {
         for(var x= 0; x < worksArray.length; x ++) {
             worksArray[x].classList.remove('hidden');
-            await delay(300);
+            await delay(delays);
         }
     }
 
-
-    function hoverEffect(e) {
+    function hoverEffect(e) { /*hover scale effect on column img*/
         let element = e.target.nextSibling;
         let card = element.querySelector('.img img');
         card.classList.toggle('hover-image');
     }
 
-
-    const fetchData = useCallback(() => {
+    const fetchData = useCallback(() => { //fetch data for school projects section
         fetch(url)
         .then(res => res.json())
         .then(
             (result) => {
                 setItems(result.items);
             },
-            // Note: it's important to handle errors here
-            // instead of a catch() block so that we don't swallow
-            // exceptions from actual bugs in components.
-            (error) => {
-                setError(error);
+            (err) => {
+                setError(err);
+                console.warm(error);
             }
-         );   
+         );
+         setTimeout(() => { set(false) }, 400);
     }, [url]);
-
 
     useEffect(() => {    //handles scroll to display school projects
         let itemsLoade = false;
@@ -56,7 +57,6 @@ function Projects(props) {
                 itemsLoade = true;
                 setTimeout(() => {
                     fetchData();
-
                 }, 100);
             }
         }
@@ -68,18 +68,19 @@ function Projects(props) {
     useEffect(() => {  //handles fade in effect on freelance works
         let worksArray = Array.from(document.querySelectorAll('.columna'));
         if(worksArray) {
-            if ((prevURL === thisURL && props.first) || !firstClickOnMenu) {
-                setTimeout(() => { eachImgDelay(worksArray) }, 1000);
-            } 
+            if((prevURL === thisURL && !props.first) || !props.firstClick) {
+                setTimeout(() => { eachImgDelay(worksArray, 800) });
+            } else {
+                worksArray.forEach(img => { img.classList.remove('hidden') });
+            }
         }
      }, []);
 
-
     const trail =  useTrail(items.length, {    ////handles fade in effect on school projects
-        from: {opacity: 0},
-        to: {opacity: 1},
+        opacity: toggle ? 0 : 1,
+        transform: toggle ? 'translateY(-20%)' : 'translateY(0)',
+        from: {transform: 'translateY(-20%)'},        
     })
-
 
     return (
         <div id="section-projects" >
@@ -146,20 +147,18 @@ function Projects(props) {
                 
             </div>
             <Container  className="text-center school-project-wrapper">
-                <h4>At FreeCodeCamp.org</h4>
+                <h4 className={toggle ? 'hidden-subtitle' : ''}>At FreeCodeCamp.org</h4>
                 <Row >
-                    {trail.map((props, index) => {
-                        return (
-                            <animated.div
+                    {trail.map((props, index) => (
+                        <animated.div
                             key={items[index].id}
                             style={props}
                             className="col-sm-3"
-                            >
-                                <img src={items[index].src} alt={items[index].title}></img>
-                                <div>{items[index].title}</div>    
-                            </animated.div>
-                        )
-                    })}
+                        >
+                            <img src={items[index].src} alt={items[index].title}></img>
+                            <div>{items[index].title}</div>    
+                        </animated.div>
+                    ))}
                 </Row>
             </Container>
         </div>
@@ -167,23 +166,3 @@ function Projects(props) {
 }
 
 export default Projects;
-
-
-    //const currentScrollY = window.scrollY;
-    //console.log( 'prev', prevScrollY.current) 
-    //console.log( 'curr', currentScrollY) 
-    //console.log('goingg up', goingUp);
-    //if (prevScrollY.current < currentScrollY && goingUp) {
-    //         console.log('goingup has changed and is true now')
-    //         setGoingUp(false);
-    //         loadProjects();
-    //         array = document.querySelectorAll('.school-project-wrapper')
-    //         console.log(array);
-    //     }
-    //     if (prevScrollY.current > currentScrollY && !goingUp) {
-    //         setGoingUp(true);
-    //     }
-    //     prevScrollY.current = currentScrollY;
-    //     console.log('final console log');
-    //
-    // }

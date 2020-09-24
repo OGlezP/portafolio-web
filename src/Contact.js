@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Container from 'react-bootstrap/container';
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
@@ -13,13 +13,17 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 function Contact(props) {
     let thisURL = props.currentURL;  
     let prevURL = props.previousURL;  
-    let classNameList = "";
+    const [toggle, set] = useState(false);
 
-
-    if ((prevURL === thisURL && props.first) ) {
-        // if ((prevURL === thisURL && props.first) || !props.clickedMenuContact) {
-        classNameList = "hidden-contact-form";
-    }
+    useEffect(() => {
+        if ((prevURL === thisURL && !props.first) || !props.firstClicked) {
+            set(true);
+        } else {
+            setTimeout(() => {
+                set(false);
+            }, 500)
+        }
+    });
 
     return (
         <div id="section-contact">
@@ -30,7 +34,7 @@ function Contact(props) {
                     <p id="title-section-text">Please use the next form to get in touch, or send a direct e-mail or phone call.</p>
                 </div>
             </div>
-            <Container className={classNameList} id="contact-container">
+            <Container className={toggle ? "hidden-contact-form" : ""} id="contact-container">
                 <Form>
                     <Form.Group controlId="exampleForm.ControlInput1">
                         <Form.Control type="email" placeholder="E-mail" />

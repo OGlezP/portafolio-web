@@ -8,14 +8,15 @@ import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
 function Home(props) {
+    console.log('home', props.first)
     return(
         <Row id="row-cont-home" className="no-gutters" >
             <div className="txt-cont">
-                <h1 className={props.first ? "logo appear" : "logo"}>
+                <h1 className={!props.first ? "logo appear" : "logo"}>
                     <span id="line-1">OG</span>
                     <span id="line-2">LEZ.</span>
                 </h1>
-                <p className={props.first ? "p-0 info-txt fade-in-txt" : "p-0 info-txt"}>
+                <p className={!props.first ? "p-0 info-txt fade-in-txt" : "p-0 info-txt"}>
                     Concert photographer and 
                     freelance front-end web developer, 
                     based on Guadalajara, Jal. Mexico.

@@ -365,12 +365,19 @@ html {
 
 #section-projects .school-project-wrapper h4 {
   font-size: 25px;
-  margin-bottom: 5rem;
+  margin-bottom: 2rem;
+  transition: all 1s;
+  transition-timing-function: cubic-bezier(0.61, -0.14, 0.78, 0.09);
+}
+
+#section-projects .school-project-wrapper .hidden-subtitle {
+  transform: translateX(-10%);
+  opacity: 0;
+  transition: all .6s;
 }
 
 #section-projects .school-project-wrapper .col-sm-3 {
   padding: 5px;
-  transition: all .6s;
 }
 
 #section-projects .school-project-wrapper .col-sm-3 img {
