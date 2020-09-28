@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import Container from 'react-bootstrap/Container';
+import React from 'react';
 import Row from 'react-bootstrap/row';
 import Col from 'react-bootstrap/col';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

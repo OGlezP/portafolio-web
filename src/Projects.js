@@ -48,7 +48,7 @@ function Projects(props) {
             }
          );
          setTimeout(() => { set(false) }, 400);
-    }, [url]);
+    }, url);
 
     useEffect(() => {    //handles scroll to display school projects
         let itemsLoade = false;

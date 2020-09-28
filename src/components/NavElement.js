@@ -1,30 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useLocation } from 'react-router-dom';
 // import ReactDOM from 'react-dom';
 import {
   Link
 } from "react-router-dom";
-// import Container from 'react-bootstrap/Container'
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import '../App.css';
-
-// function updatePagesFirstRender() {
-//   setTimeout(() => {
-//     this.setState({
-//       clickedOnProjects: true
-//     });
-//   }, 100);
-// }
-
-
-// function updatefirstClickOnContact () {
-//   setTimeout(() => {
-//     this.setState({
-//       clickedOnContact: true
-//     });
-//   }, 800);
-// }
 
 function NavElement({firstProjects, firstContact}) {
   let location = useLocation();
@@ -42,17 +24,6 @@ function NavElement({firstProjects, firstContact}) {
       currentLink.nextElementSibling.classList.remove('transform-underline');
     }
   }
-
-  useEffect(() => {
-    // console.log('contact click', contactClick);
-  })
-
-  // function updateFirstState() {
-  //   console.log('clicked projects link')
-  //   setContactClick('hola');
-
-  //   firstProjects(contactClick);
-  // }
 
   return (
     <Navbar className='border-bottom transparent' expand="lg">
