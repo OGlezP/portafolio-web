@@ -49,7 +49,7 @@ function NavElement({firstProjects, firstContact}) {
               className='nav-link' 
               to="/Projects" 
               
-              onClick={() => setTimeout(() => {firstProjects(true)}, 200)}
+              onClick={() => setTimeout(() => {firstProjects(true)}, 800)}
               onMouseOver={currentLocation === '/Projects' ? (() => {}) : mouseOverMenuLink} 
               onMouseLeave={currentLocation === '/Projects' ? (() => {}) : mouseOverMenuLink}>
                 Projects
@@ -62,7 +62,7 @@ function NavElement({firstProjects, firstContact}) {
             className='nav-link'
             to="/Contact"  
 
-            onClick={() => setTimeout(() => {firstContact(true)}, 200)}
+            onClick={() => setTimeout(() => {firstContact(true)}, 800)}
             onMouseOver={currentLocation === '/Contact' ? (() => {}) : mouseOverMenuLink} 
             onMouseLeave={currentLocation === '/Contact' ? (() => {}) : mouseOverMenuLink}>
                 Contact

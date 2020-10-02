@@ -288,6 +288,11 @@ html {
   background-image: url("/img/title-background/contact.jpg");
 }
 
+.hidden-sect {
+  visibility: hidden;
+  opacity: 0;
+}
+
 #section-projects .projects {
   max-width: 1700px;
   position: relative;
@@ -295,10 +300,8 @@ html {
   top: -100px;
 }
 
-#section-projects .projects .row .hidden {
-  /*fade-in column effect*/
-  opacity: 0;
-  transform: translateY(20%);
+#section-projects .projects .row {
+  background-color: wheat;
 }
 
 #section-projects .projects .row .columna {
@@ -308,7 +311,6 @@ html {
   height: auto;
   margin: 10px;
   background-color: #ffffff;
-  transition: all .7s;
   position: relative;
 }
 
@@ -541,7 +543,8 @@ html {
 }
 
 .footer-first-enter {
-  animation: load-footer .5s;
+  transition: all .6s;
+  opacity: 0;
 }
 
 #footer {
@@ -549,31 +552,32 @@ html {
   height: 50px;
 }
 
-#footer #foot-cont {
+#footer .foot-cont {
   width: 96%;
   position: absolute;
   left: 2%;
   font-size: 1.5rem;
   font-weight: 500;
+  transition: all .6s;
 }
 
-#footer #foot-cont .name {
+#footer .foot-cont .name {
   height: 50px;
   display: flex;
   align-items: center;
 }
 
-#footer #foot-cont .social-icons-footer {
+#footer .foot-cont .social-icons-footer {
   font-size: 1.8rem;
   position: absolute;
   right: 0;
   top: 10px;
 }
 
-#footer #foot-cont .social-icons-footer .icons-footer {
+#footer .foot-cont .social-icons-footer .icons-footer {
   margin: 0 10px;
 }
 
-#footer #foot-cont .social-icons-footer .fa-github {
+#footer .foot-cont .social-icons-footer .fa-github {
   margin-right: 0;
 }

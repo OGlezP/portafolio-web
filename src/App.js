@@ -12,7 +12,6 @@ import Footer from './components/Footer';
 import Home from './Home';
 import Projects from './Projects';
 import Contact from './Contact';
-// import Routes from './Routes';
 
 
 import ReactLoading from 'react-loading';
@@ -24,7 +23,6 @@ function App() {
   let [firstLoad, setFirstLoad] = useState(false);
   let [firstClickProjects, setFirstClickProjects] = useState(false);
   let [firstClickContact, setFirstClickContact] = useState(false);
-  // let firstClickProjects;
 
 
   const location = useLocation();
@@ -42,23 +40,31 @@ function App() {
 
 
   useEffect(() => {
-    if(url === '/Projects') {
-      setFirstClickProjects(true);
-    }
-    if(url === '/Contact') {
-      setFirstClickContact(true);
-    }
+      if(url === '/Projects') {
+        setTimeout(() => {
+          setFirstLoad(true);
+        }, 1800);
+        setFirstClickProjects(true);
+        
+      }
+      if(url === '/Contact') {
+        setTimeout(() => {
+          setFirstLoad(true);
+        }, 1800);
+        setFirstClickContact(true);
+      }
+      if(url === '/') {
+        setTimeout(() => {
+          setFirstLoad(true);
+        }, 1200);
+      }
 
     setTimeout(() => {
         setInitialLoader(true);
       }, 1000)
 
-      setTimeout(() => {
-        setFirstLoad(true);
-      }, 1500)
-  },[])
-
-  console.log('projects component when url == projects', firstClickProjects);
+     
+  }, [url]);
 
 
   const transitions = useTransition(location, location => location.pathname, {
@@ -105,7 +111,7 @@ function App() {
                      }/>
                   </Switch>
                 </div>
-                <Footer id="foot" />
+                <Footer firstLoad={firstLoad} id="foot" />
               </animated.div>
             ))}
           </div>

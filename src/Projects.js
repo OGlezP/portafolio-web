@@ -1,25 +1,40 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import Container from "react-bootstrap/container";
 import Row from "react-bootstrap/Row";
 import Column from "react-bootstrap/Col";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGlobe } from "@fortawesome/free-solid-svg-icons";
 import { faCode } from "@fortawesome/free-solid-svg-icons";
-import { animated, useTrail } from 'react-spring';
+import { animated, useTrail, useTransition, useSpring, useChain } from 'react-spring';
 
 function Projects(props) {  
     let thisURL = props.currentURL;  
     let prevURL = props.previousURL; 
     const url = "/school-projects.json";
+    const _URL_freelancer = "/freelance-projects.json"
     const [error, setError] = useState(null);
     const [items, setItems] = useState([]);
+    const [freelanceError, setFreelanceError] = useState(null);
+    const [freelanceProjects, setFreelanceProjects] = useState([]);
     const [toggle, set] = useState(true);
+    const [toggleDos, setToggleDos] = useState(true);
     const delay = ms => new Promise(res => setTimeout(res, ms));
 
-        // function imgAppearEffect(worksArray) {
-    //     worksArray.forEach(img => { img.classList.add('hidden') });
-    //     setTimeout(() => { eachImgDelay(worksArray, 300) }, 600);
+    let worksArray = [];
+    const [listaDeClases, setList] = useState(false);
+
+    // async function eachImgDelay(worksArray, delays) {
+    //     for(var x= 0; x < worksArray.length; x ++) {
+    //         worksArray[x].classList.remove('hidden');
+    //         await delay(delays);
+    //     }
     // }
+
+    function hoverEffect(e) { /*hover scale effect on column img*/
+        let element = e.target.nextSibling;
+        let card = element.querySelector('.img img');
+        card.classList.toggle('hover-image');
+    }
 
 
     async function eachImgDelay(worksArray, delays) {
@@ -29,29 +44,27 @@ function Projects(props) {
         }
     }
 
-    function hoverEffect(e) { /*hover scale effect on column img*/
-        let element = e.target.nextSibling;
-        let card = element.querySelector('.img img');
-        card.classList.toggle('hover-image');
-    }
-
-    const fetchData = useCallback(() => { //fetch data for school projects section
-        fetch(url)
-        .then(res => res.json())
-        .then(
-            (result) => {
-                setItems(result.items);
-            },
-            (err) => {
-                setError(err);
-                console.warm(error);
-            }
-         );
-         setTimeout(() => { set(false) }, 400);
-    }, url);
 
     useEffect(() => {    //handles scroll to display school projects
         let itemsLoade = false;
+
+        function fetchData () {
+            fetch(url)
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    setItems(result.items);
+                    console.log('items', items);
+
+                },
+                (err) => {
+                    setError(err);
+                    console.warm(error);
+                }
+            );
+            setTimeout(() => { set(false) }, 400);
+        }
+
         const handleScroll = () => {       
             if(!itemsLoade) {
                 itemsLoade = true;
@@ -60,27 +73,49 @@ function Projects(props) {
                 }, 100);
             }
         }
+    
         window.addEventListener("scroll", handleScroll, { passive: true });
         return () => window.removeEventListener("scroll", handleScroll);
-    }, [fetchData]);
+    }, [url]);
 
+    useEffect(() => {
+            console.log('true values');
+            fetch(_URL_freelancer)
+            .then(res => res.json())
+            .then(
+                (answer) => {
+                    setFreelanceProjects(answer.items);
+                    console.log(freelanceProjects);
 
-    useEffect(() => {  //handles fade in effect on freelance works
-        let worksArray = Array.from(document.querySelectorAll('.columna'));
-        if(worksArray) {
-            if((prevURL === thisURL && !props.first) || !props.firstClick) {
-                setTimeout(() => { eachImgDelay(worksArray, 800) });
-            } else {
-                worksArray.forEach(img => { img.classList.remove('hidden') });
+                },
+                (possible_error) => {
+                    setFreelanceError(possible_error);
+                    console.warn(freelanceError);
+                }
+            );
+
+        if(props.first) {
+            if(props.firstClick) {
+                setTimeout(() => { setToggleDos(false) }, 200);
+
             }
-        }
-     }, []);
+                
+        } 
+
+    }, []); 
 
     const trail =  useTrail(items.length, {    ////handles fade in effect on school projects
         opacity: toggle ? 0 : 1,
         transform: toggle ? 'translateY(-20%)' : 'translateY(0)',
         from: {transform: 'translateY(-20%)'},        
     })
+
+    const columnEffect = useTrail(freelanceProjects.length, {    ////handles fade in effect on school projects
+        opacity: toggleDos ? 0 : 1,
+        transform: toggleDos ? 'translateY(-20%)' : 'translateY(0)',
+        from: {transform: 'translateY(-20%)'},         
+    })
+
 
     return (
         <div id="section-projects" >
@@ -92,57 +127,64 @@ function Projects(props) {
                 </div>
             </div>
             <div className="projects">
-                <Row className="justify-content-md-center no-gutters">
-                    <Column md='3' className="columna text-center hidden">
-                        <div className='hover-layer' onMouseOver={hoverEffect} onMouseLeave={hoverEffect}></div>
-                        <div className="project-info">
-                            <div className="img">
-                                <img src="img/img-projects/cosmosonidos.png" alt=""></img>
-                            </div>
-                            <div className="project-web">
-                                <FontAwesomeIcon icon={faGlobe } > </FontAwesomeIcon>
-                                <span> </span> cosmosonidos.com
-                            </div>
-                            <div className="project-tech">
-                                <FontAwesomeIcon icon={faCode}></FontAwesomeIcon>
-                                <span> </span> HTML5 + SASS + Js
-                            </div>
-                            
-                        </div>
-                    </Column>
-                    <Column md='3' className="columna text-center hidden">
-                        <div className='hover-layer' onMouseOver={hoverEffect} onMouseLeave={hoverEffect}></div>
-                        <div  className="project-info">
-                            <div className="img">
-                                <img src="img/img-projects/oglezp-portafolio.png" alt=""></img>
-                            </div>
-                            <div className="project-web">
-                                <FontAwesomeIcon icon={faGlobe}> </FontAwesomeIcon>
-                                <span> </span> cosmosonidos.com
-                            </div>
-                            <div className="project-tech">
-                                <FontAwesomeIcon icon={faCode}></FontAwesomeIcon>
-                                <span> </span> HTML5 + SASS + jQuery
-                            </div>
-                        </div>
-                    </Column>
+                <Row className={"justify-content-md-center no-gutters"}>
+                {/* <Row className={(!props.first || !props.firstClick) ? "justify-content-md-center no-gutters hidden-sect" : "justify-content-md-center no-gutters"}> */}
+                    {
+                    (!props.first || !props.firstClick) ? 
+                         columnEffect.map((props, index) => (
+                            <animated.div
+                                key={freelanceProjects[index].id}
+                                style={props}
+                                className="columna col-md text-center"
+                            >
+                                <div className='hover-layer' onMouseOver={hoverEffect} onMouseLeave={hoverEffect}></div>
+                            <div className="project-info">
+                                <div className="img">
+                                    <img src={freelanceProjects[index].src} alt=""></img>
+                                </div>
+                                <div className="project-web">
+                                    <FontAwesomeIcon icon={faGlobe } > </FontAwesomeIcon>
+                                    <span> </span> {freelanceProjects[index].title}
+                                </div>
+                                <div className="project-tech">
+                                    <FontAwesomeIcon icon={faCode}></FontAwesomeIcon>
+                                    <span> </span> {freelanceProjects[index].web_techonologies}
+                                </div>
+                                
+                            </div>   
+                            </animated.div>
+                        )) :
 
-                    <Column md='3' className="columna text-center hidden">
-                        <div className='hover-layer' onMouseOver={hoverEffect} onMouseLeave={hoverEffect}></div>
-                        <div  className="project-info">
-                            <div className="img">
-                                <img src="img/img-projects/cosmosonidos.png" alt=""></img>
+                        freelanceProjects.map((item, index) => { 
+                            return (
+                                <div
+                                className="columna col-md text-center"
+                            >
+                                <div className='hover-layer' onMouseOver={hoverEffect} onMouseLeave={hoverEffect}></div>
+                            <div className="project-info">
+                                <div className="img">
+                                    <img src={item.src} alt=""></img>
+                                </div>
+                                <div className="project-web">
+                                    <FontAwesomeIcon icon={faGlobe } > </FontAwesomeIcon>
+                                    <span> </span> {item.title}
+                                </div>
+                                <div className="project-tech">
+                                    <FontAwesomeIcon icon={faCode}></FontAwesomeIcon>
+                                    <span> </span> {item.web_techonologies}
+                                </div>
+                                
+                            </div>   
                             </div>
-                            <div className="project-web">
-                                <FontAwesomeIcon icon={faGlobe}></FontAwesomeIcon>
-                                <span> </span> cosmosonidos.com
-                            </div>
-                            <div className="project-tec">
-                                <FontAwesomeIcon icon={faCode}></FontAwesomeIcon>
-                                <span> </span> WordPress (HTML + Css + PHP + Js)
-                            </div>
-                        </div>
-                    </Column>
+                            )
+                        })
+                    
+                    
+                    }
+                       
+                        
+
+                    
                 </Row>
                 
             </div>
@@ -166,3 +208,39 @@ function Projects(props) {
 }
 
 export default Projects;
+
+
+  // const fetchData = useCallback(() => { //fetch data for school projects section
+    //     fetch(url)
+    //     .then(res => res.json())
+    //     .then(
+    //         (result) => {
+    //             setItems(result.items);
+    //         },
+    //         (err) => {
+    //             setError(err);
+    //             console.warm(error);
+    //         }
+    //      );
+    //      setTimeout(() => { set(false) }, 400);
+    // }, [url]);
+
+    // useEffect(() => {  //handles fade in effect on freelance works
+    //     let worksArray = Array.from(document.querySelectorAll('.columna'));
+
+    //     async function eachImgDelay(worksArray, delays) {
+    //         for(var x= 0; x < worksArray.length; x ++) {
+    //             worksArray[x].classList.remove('hidden');
+    //             await delay(delays);
+    //         }
+    //     }
+
+    //     if(worksArray) {
+    //         if((prevURL === thisURL && !props.first)) {
+    //             setTimeout(() => { eachImgDelay(worksArray, 300) });
+    //         } 
+    //         if (props.firstClick) {
+    //             worksArray.forEach(img => { img.classList.remove('hidden') });
+    //         }
+    //     }
+    //  }, [prevURL,props.first, props.firstClick, thisURL]);

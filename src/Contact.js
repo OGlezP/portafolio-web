@@ -15,6 +15,8 @@ function Contact(props) {
     let prevURL = props.previousURL;  
     const [toggle, set] = useState(false);
 
+    console.log("togle first", toggle);
+
     useEffect(() => {
         if ((prevURL === thisURL && !props.first) || !props.firstClicked) {
             set(true);
@@ -23,7 +25,7 @@ function Contact(props) {
                 set(false);
             }, 500)
         }
-    });
+    }, [prevURL, thisURL, props.first, props.firstClicked]);
 
     return (
         <div id="section-contact">

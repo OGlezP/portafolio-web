@@ -1,0 +1,28 @@
+{
+    "items": [
+        {
+            "id": 0,
+            "src": "/img/img-projects/cosmosonidos.png",
+            "title": "cosmosonidos.com",
+            "web_techonologies": "HTML + SASS + Bootstrap + Js"
+        },
+        {
+            "id": 1,
+            "src": "/img/img-projects/oglezp-portafolio.png",
+            "title": "oglez.com",
+            "web_techonologies": "React Js + SASS + Bootstrap"
+        },
+        {
+            "id": 2,
+            "src": "/img/img-projects/iias-site.png",
+            "title": "institutoiias.com",
+            "web_techonologies": "HTML + SASS + Bootstrap + Js + JQuery"
+        },
+        {
+            "id": 3,
+            "src": "/img/img-projects/oglez-music-photo.png",
+            "title": "oglez-musicphoto.com",
+            "web_techonologies": "Wordpress (HTML + Css + PHP + Js)"
+        }
+    ]
+}
