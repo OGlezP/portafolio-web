@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Container from "react-bootstrap/container";
 import Row from "react-bootstrap/Row";
-import Column from "react-bootstrap/Col";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGlobe } from "@fortawesome/free-solid-svg-icons";
 import { faCode } from "@fortawesome/free-solid-svg-icons";
-import { animated, useTrail, useTransition, useSpring, useChain } from 'react-spring';
+import { animated, useTrail } from 'react-spring';
 
 function Projects(props) {  
-    let thisURL = props.currentURL;  
-    let prevURL = props.previousURL; 
+    // let thisURL = props.currentURL;  
+    // let prevURL = props.previousURL; 
     const url = "/school-projects.json";
     const _URL_freelancer = "/freelance-projects.json"
     const [error, setError] = useState(null);
@@ -18,10 +17,11 @@ function Projects(props) {
     const [freelanceProjects, setFreelanceProjects] = useState([]);
     const [toggle, set] = useState(true);
     const [toggleDos, setToggleDos] = useState(true);
+    const [refreshing, setRefreshing] = useState(false)
+    
     const delay = ms => new Promise(res => setTimeout(res, ms));
 
-    let worksArray = [];
-    const [listaDeClases, setList] = useState(false);
+    // let worksArray = [];
 
     // async function eachImgDelay(worksArray, delays) {
     //     for(var x= 0; x < worksArray.length; x ++) {
@@ -37,12 +37,12 @@ function Projects(props) {
     }
 
 
-    async function eachImgDelay(worksArray, delays) {
-        for(var x= 0; x < worksArray.length; x ++) {
-            worksArray[x].classList.remove('hidden');
-            await delay(delays);
-        }
-    }
+    // async function eachImgDelay(worksArray, delays) {
+    //     for(var x= 0; x < worksArray.length; x ++) {
+    //         worksArray[x].classList.remove('hidden');
+    //         await delay(delays);
+    //     }
+    // }
 
 
     useEffect(() => {    //handles scroll to display school projects
@@ -76,33 +76,43 @@ function Projects(props) {
     
         window.addEventListener("scroll", handleScroll, { passive: true });
         return () => window.removeEventListener("scroll", handleScroll);
-    }, [url]);
+    }, [error, items]);
+
+    const onRefresh = useCallback( async () => {    
+        setRefreshing(true);
+        await delay(1000)
+
+        setToggleDos(false);
+
+        fetchDataPrincipal();
+
+      }, [])
+
+      function fetchDataPrincipal() {
+        fetch(_URL_freelancer)
+        .then(res => res.json())
+        .then(
+            (answer) => {
+                setFreelanceProjects(answer.items);
+                console.log(freelanceProjects);
+
+            },
+            (possible_error) => {
+                setFreelanceError(possible_error);
+                console.warn(freelanceError);
+            }
+        );
+      }
 
     useEffect(() => {
             console.log('true values');
-            fetch(_URL_freelancer)
-            .then(res => res.json())
-            .then(
-                (answer) => {
-                    setFreelanceProjects(answer.items);
-                    console.log(freelanceProjects);
+            
 
-                },
-                (possible_error) => {
-                    setFreelanceError(possible_error);
-                    console.warn(freelanceError);
-                }
-            );
+        if(!props.first || !props.firstClick) {
+            onRefresh();
+        }
 
-        if(props.first) {
-            if(props.firstClick) {
-                setTimeout(() => { setToggleDos(false) }, 200);
-
-            }
-                
-        } 
-
-    }, []); 
+    }, [onRefresh, props.first, props.firstClick]); 
 
     const trail =  useTrail(items.length, {    ////handles fade in effect on school projects
         opacity: toggle ? 0 : 1,
@@ -130,7 +140,7 @@ function Projects(props) {
                 <Row className={"justify-content-md-center no-gutters"}>
                 {/* <Row className={(!props.first || !props.firstClick) ? "justify-content-md-center no-gutters hidden-sect" : "justify-content-md-center no-gutters"}> */}
                     {
-                    (!props.first || !props.firstClick) ? 
+                    (refreshing) ? 
                          columnEffect.map((props, index) => (
                             <animated.div
                                 key={freelanceProjects[index].id}

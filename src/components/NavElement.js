@@ -1,4 +1,4 @@
-import React from "react";
+import React  from "react";
 import { useLocation } from 'react-router-dom';
 // import ReactDOM from 'react-dom';
 import {
@@ -8,10 +8,10 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import '../App.css';
 
+
 function NavElement({firstProjects, firstContact}) {
   let location = useLocation();
   let currentLocation = location.pathname;
-  // let [contactClick, setContactClick] = useState(false);
 
   function mouseOverMenuLink(e) {
     e.preventDefault();  
@@ -49,7 +49,7 @@ function NavElement({firstProjects, firstContact}) {
               className='nav-link' 
               to="/Projects" 
               
-              onClick={() => setTimeout(() => {firstProjects(true)}, 800)}
+              onClick={() => setTimeout(() => {firstProjects(true)}, 50)}
               onMouseOver={currentLocation === '/Projects' ? (() => {}) : mouseOverMenuLink} 
               onMouseLeave={currentLocation === '/Projects' ? (() => {}) : mouseOverMenuLink}>
                 Projects
