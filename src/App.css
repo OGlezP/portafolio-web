@@ -291,6 +291,8 @@ html {
 .hidden-sect {
   visibility: hidden;
   opacity: 0;
+  transform: translateY(20%);
+  transition: all .6s;
 }
 
 #section-projects .projects {
@@ -302,6 +304,9 @@ html {
 
 #section-projects .projects .row {
   background-color: wheat;
+  visibility: visible;
+  min-height: 100px;
+  transition: all .8s;
 }
 
 #section-projects .projects .row .columna {

@@ -43,14 +43,14 @@ function App() {
       if(url === '/Projects') {
         setTimeout(() => {
           setFirstLoad(true);
-        }, 1800);
+        }, 1200);
         setFirstClickProjects(true);
         
       }
       if(url === '/Contact') {
         setTimeout(() => {
           setFirstLoad(true);
-        }, 1800);
+        }, 1200);
         setFirstClickContact(true);
       }
       if(url === '/') {

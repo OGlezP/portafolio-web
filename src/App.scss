@@ -256,8 +256,8 @@ html {
 .hidden-sect {
   visibility: hidden;
   opacity: 0;
-  // transform: translateY(20%);
-  // transition: all .6s;
+  transform: translateY(20%);
+  transition: all .6s;
 }
 
 
@@ -269,8 +269,9 @@ html {
     top: -100px;
     .row {
       background-color: wheat;
-
-
+      visibility: visible;
+      min-height: 100px;
+      transition: all .8s;
       // .hidden { /*fade-in column effect*/
       //   opacity: 0;
       //   transform: translateY(20%);
