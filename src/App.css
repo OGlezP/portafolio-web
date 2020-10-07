@@ -303,8 +303,6 @@ html {
 }
 
 #section-projects .projects .row {
-  background-color: wheat;
-  visibility: visible;
   min-height: 100px;
   transition: all .8s;
 }
