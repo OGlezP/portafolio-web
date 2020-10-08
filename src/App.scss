@@ -140,7 +140,7 @@ html {
 
 #row-cont-home {
   background-color: rgb(0, 0, 0);
-  // background-image: url('/img/oglez-background.jpg');
+  background-image: url('/img/oglez-background.jpg');
   background-size: 85%;
   background-position: center;
   background-repeat: no-repeat;
@@ -356,13 +356,6 @@ html {
 
 
 /***********projects page*********/
-.hidden-contact-form {
-  visibility: hidden;
-  opacity: 0;
-  transform: translateY(20%);
-  transition: all .6s;
-}
-
 #contact-container {
   background-color: #ffffff;
   -webkit-box-shadow: -2px -2px 13px 1px rgba(0,0,0,0.75);
@@ -375,7 +368,6 @@ html {
   top: -100px;
   display: flex;
   flex-direction: row;
-  transition: all .6s;
   form {
     text-align: left;
     position: relative;

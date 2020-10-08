@@ -1,44 +1,27 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import Container from "react-bootstrap/container";
 import Row from "react-bootstrap/Row";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGlobe } from "@fortawesome/free-solid-svg-icons";
-import { faCode } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faGlobe } from "@fortawesome/free-solid-svg-icons";
+// import { faCode } from "@fortawesome/free-solid-svg-icons";
 import { animated, useTrail } from 'react-spring';
 import ColsInProjects from './colsInProjects';
 import ColsInProjectsFixed from './colsInProjectsFixed';
 
 
 function Projects(props) {  
-    let thisURL = props.currentURL;  
-    let prevURL = props.previousURL; 
     const url = "/school-projects.json";
     const _URL_freelancer = "/freelance-projects.json"
     const [error, setError] = useState(null);
     const [items, setItems] = useState([]);
-    // const [freelanceError, setFreelanceError] = useState(null);
+    const [freelanceError, setFreelanceError] = useState(null);
     const [freelanceProjects, setFreelanceProjects] = useState([]);
     const [toggle, set] = useState(true);
+
     const [hiddenSect, setHiddenSect] = useState(false);
-    
 
     useEffect(() => {    //handles scroll to display school projects
         let itemsLoade = false;
-
-        fetch(_URL_freelancer)
-        .then(res => res.json())
-        .then(
-            (answer) => {
-                setFreelanceProjects(answer.items);
-
-
-            },
-            (possible_error) => {
-                // setFreelanceError(possible_error);
-                let error = possible_error
-                console.warn(error);
-            }
-        );
 
         function fetchData () {
             fetch(url)
@@ -46,8 +29,6 @@ function Projects(props) {
             .then(
                 (result) => {
                     setItems(result.items);
-                    // console.log('items', items);
-
                 },
                 (err) => {
                     setError(err);
@@ -66,15 +47,27 @@ function Projects(props) {
             }
         }
     
+
         window.addEventListener("scroll", handleScroll, { passive: true });
         return () => window.removeEventListener("scroll", handleScroll);
     }, [error, items]);
 
-
     useEffect(() => {
-        (!props.first || !props.firstClick) ? setHiddenSect(true) : setHiddenSect(false);
-    }, [])
+        fetch(_URL_freelancer)
+        .then(res => res.json())
+        .then(
+            (answer) => {
+                setFreelanceProjects(answer.items);
+            },
+            (possible_error) => {
+                setFreelanceError(possible_error);
+                console.warn(freelanceError);
+            }
+        );
 
+        (!props.first || !props.firstClick) ? setHiddenSect(false) : setHiddenSect(true);
+
+    }, [])
 
     const trail =  useTrail(items.length, {    ////handles fade in effect on school projects
         opacity: toggle ? 0 : 1,
@@ -82,7 +75,7 @@ function Projects(props) {
         from: {transform: 'translateY(-20%)'},        
     })
 
-    if(!hiddenSect) {
+    if(hiddenSect) {
         return (
             <div id="section-projects" >
                 <div className="title-container">
@@ -93,7 +86,7 @@ function Projects(props) {
                     </div>
                 </div>
                 <div className="projects">
-                <ColsInProjectsFixed projects={freelanceProjects}></ColsInProjectsFixed>
+                    <ColsInProjectsFixed projects={freelanceProjects}></ColsInProjectsFixed>
                 </div>
                 <Container  className="text-center school-project-wrapper">
                     <h4 className={toggle ? 'hidden-subtitle' : ''}>At FreeCodeCamp.org</h4>
@@ -123,7 +116,7 @@ function Projects(props) {
                     </div>
                 </div>
                 <div className="projects">
-                        <ColsInProjects></ColsInProjects>
+                    <ColsInProjects projects={freelanceProjects} hidden={hiddenSect}></ColsInProjects>               
                 </div>
                 <Container  className="text-center school-project-wrapper">
                     <h4 className={toggle ? 'hidden-subtitle' : ''}>At FreeCodeCamp.org</h4>
@@ -143,9 +136,6 @@ function Projects(props) {
             </div>
         );
     }
-
-    
-    
 }
 
 export default Projects;
