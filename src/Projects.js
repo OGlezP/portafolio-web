@@ -71,15 +71,31 @@ function Projects(props) {
 
     const trail =  useTrail(items.length, {    ////handles fade in effect on school projects
         opacity: toggle ? 0 : 1,
-        transform: toggle ? 'translateY(-20%)' : 'translateY(0)',
-        from: {transform: 'translateY(-20%)'},        
+        transition: 'opacity .3s',
+        transform: toggle ? 'translateY(20%)' : 'translateY(0)',
+        from: {transform: 'translateY(20%)'},        
     })
+
+    const backimg = "./img/title-background/back-title.png"
+
+    const backHeaderStyle = {
+        backgroundImage: "url(" + backimg + ")",
+        width: '100%',
+        height: '100%',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        position: 'absolute',
+        filter: 'blur(3px) grayscale(.3)',
+        top: 0,
+        left: 0,
+    };
 
     if(hiddenSect) {
         return (
             <div id="section-projects" >
-                <div className="title-container">
-                    <div className="back-img-projects style-bk-img"></div>
+                <div className="title-container"> 
+                {/* back-img-projects style-bk-img */}
+                    <div className="" style={backHeaderStyle}></div>
                     <div className="txt-wrapper">
                         <h1 className="title-section">Portfolio</h1>
                         <p id="title-section-text">Here are some works as a freelance and some excersice at freecodecamp.org</p>
@@ -109,7 +125,8 @@ function Projects(props) {
         return (
             <div id="section-projects" >
                 <div className="title-container">
-                    <div className="back-img-projects style-bk-img"></div>
+                    {/* <div className="back-img-projects style-bk-img"></div> */}
+                    <div className="" style={backHeaderStyle}></div>
                     <div className="txt-wrapper">
                         <h1 className="title-section">Portfolio</h1>
                         <p id="title-section-text">Here are some works as a freelance and some excersice at freecodecamp.org</p>

@@ -8,8 +8,17 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
 function Home(props) {
     console.log('home', props.first)
+    const urlImgBack = "./img/oglez-background.jpg";
+    
+    const styleHomeBack = {
+        backgroundImage: "url(" + urlImgBack + ")",
+        backgroundSize: '85%',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+    }
+
     return(
-        <Row id="row-cont-home" className="no-gutters" >
+        <Row id="row-cont-home" style={styleHomeBack} className="no-gutters" >
             <div className="txt-cont">
                 <h1 className={!props.first ? "logo appear" : "logo"}>
                     <span id="line-1">OG</span>

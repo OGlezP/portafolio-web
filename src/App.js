@@ -71,7 +71,7 @@ function App() {
     from: {
       position: 'absolute',
       width: "100%",
-      opacity: 0,
+      opacity: .6,
     },
     enter: {opacity: 1},
     leave: {opacity: 0}

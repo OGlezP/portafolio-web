@@ -165,10 +165,6 @@ html {
 
 #row-cont-home {
   background-color: black;
-  background-image: url("/img/oglez-background.jpg");
-  background-size: 85%;
-  background-position: center;
-  background-repeat: no-repeat;
   min-height: calc(100vh - 102px);
   width: 100%;
 }
@@ -238,7 +234,6 @@ html {
 .title-container {
   width: 100%;
   height: 60vh;
-  background-color: #284774;
   color: #fff;
   position: relative;
 }
@@ -279,14 +274,6 @@ html {
   filter: blur(3px) grayscale(0.3);
   top: 0;
   left: 0;
-}
-
-.back-img-projects {
-  background-image: url("/img/title-background/back-title.png");
-}
-
-.back-img-contact {
-  background-image: url("/img/title-background/contact.jpg");
 }
 
 .hidden-sect {
@@ -377,9 +364,8 @@ html {
 }
 
 #section-projects .school-project-wrapper .hidden-subtitle {
-  transform: translateX(-10%);
   opacity: 0;
-  transition: all .6s;
+  transition: all .8s;
 }
 
 #section-projects .school-project-wrapper .col-sm-3 {

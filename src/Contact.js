@@ -18,11 +18,26 @@ function Contact(props) {
         (!props.first || !props.firstClicked) ? set(false) :  set(true);
     }, []);
 
+    const backimg = "./img/title-background/contact.jpg"
+
+    const backHeaderStyle = {
+        backgroundImage: "url(" + backimg + ")",
+        width: '100%',
+        height: '100%',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        position: 'absolute',
+        filter: 'blur(3px) grayscale(.3)',
+        top: 0,
+        left: 0,
+    };
+
     if(!toggle) {
         return (
             <div id="section-contact">
                 <div className="title-container">
-                <div className="back-img-contact style-bk-img"></div>
+                {/* <div className="back-img-contact style-bk-img"></div> */}
+                <div className="" style={backHeaderStyle}></div>
                     <div className="txt-wrapper">
                         <h1 className="title-section">Contacto</h1>
                         <p id="title-section-text">Please use the next form to get in touch, or send a direct e-mail or phone call.</p>
@@ -35,7 +50,8 @@ function Contact(props) {
         return (
             <div id="section-contact">
                 <div className="title-container">
-                <div className="back-img-contact style-bk-img"></div>
+                {/* <div className="back-img-contact style-bk-img"></div> */}
+                <div className="" style={backHeaderStyle}></div>
                     <div className="txt-wrapper">
                         <h1 className="title-section">Contacto</h1>
                         <p id="title-section-text">Please use the next form to get in touch, or send a direct e-mail or phone call.</p>
@@ -115,7 +131,6 @@ function FormEffectOne() {
 function FormEffectTwo() {
     const columnEffect = useTrail(1, {    ////handles fade in effect on school projects
         opacity: 1,
-        transition: ".2s",
         from: {opacity: 0},         
     });
 
