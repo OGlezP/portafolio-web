@@ -4,25 +4,29 @@
             "id": 0,
             "src": "/img/img-projects/freeCodeCamp/RandomeQuotes.png",
             "title": "Reandome Quotes",
-            "web_techonologies": "React, Js, PHP"
+            "web_techonologies": "React Js + Hooks, Sass",
+            "link": "https://codepen.io/oglezp/pen/yvQLBO"
         },
         {
             "id": 1,
             "src": "/img/img-projects/freeCodeCamp/ReactCalculator.png",
             "title": "React Calculator",
-            "web_techonologies": "React, Js, PHP"
+            "web_techonologies": "React Js, Sass",
+            "link": "https://codepen.io/oglezp/pen/PBExMJ"
         },
         {
             "id": 2,
             "src": "/img/img-projects/freeCodeCamp/reactPomodoroClock.png",
             "title": "Pomodoro Clock",
-            "web_techonologies": "React, Js, PHP"
+            "web_techonologies": "React Js, Sass",
+            "link": "https://codepen.io/oglezp/pen/GBeeMK"
         },
         {
             "id": 3,
             "src": "/img/img-projects/freeCodeCamp/SimonGame.png",
             "title": "Simon Game",
-            "web_techonologies": "React, Js, PHP"
+            "web_techonologies": "jQuery, Css",
+            "link": "https://codepen.io/oglezp/pen/OZGGzZ?editors=0110"
         }
     ]
 }
