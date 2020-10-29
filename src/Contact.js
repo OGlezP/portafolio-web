@@ -18,7 +18,7 @@ function Contact(props) {
         (!props.first || !props.firstClicked) ? set(false) :  set(true);
     }, []);
 
-    const backimg = "./img/title-background/contact.jpg"
+    const backimg = "./img/title-background/contact-title.jpg"
 
     const backHeaderStyle = {
         backgroundImage: "url(" + backimg + ")",
@@ -32,35 +32,23 @@ function Contact(props) {
         left: 0,
     };
 
-    if(!toggle) {
-        return (
-            <div id="section-contact">
-                <div className="title-container">
-                {/* <div className="back-img-contact style-bk-img"></div> */}
-                <div className="" style={backHeaderStyle}></div>
-                    <div className="txt-wrapper">
-                        <h1 className="title-section">Contacto</h1>
-                        <p id="title-section-text">Please use the next form to get in touch, or send a direct e-mail or phone call.</p>
-                    </div>
+    return (
+        <div id="section-contact">
+            <div className="title-container">
+            {/* <div className="back-img-contact style-bk-img"></div> */}
+            <div className="" style={backHeaderStyle}></div>
+                <div className="txt-wrapper">
+                    <h1 className="title-section">Contacto</h1>
+                    <p id="title-section-text">Please use the next form to get in touch, or send a direct e-mail or phone call.</p>
                 </div>
-                <FormEffectOne/>
             </div>
-        );
-    } else {
-        return (
-            <div id="section-contact">
-                <div className="title-container">
-                {/* <div className="back-img-contact style-bk-img"></div> */}
-                <div className="" style={backHeaderStyle}></div>
-                    <div className="txt-wrapper">
-                        <h1 className="title-section">Contacto</h1>
-                        <p id="title-section-text">Please use the next form to get in touch, or send a direct e-mail or phone call.</p>
-                    </div>
-                </div>
-                <FormEffectTwo/>
-            </div>
-        );
-    }
+            {
+            (!toggle) ? 
+            (<FormEffectOne/>) :
+            (<FormEffectTwo/>)}
+            
+        </div>
+    );
 }
 
 export default Contact;
@@ -73,7 +61,7 @@ function FormEffectOne() {
     useEffect(() => {
         setTimeout(() => {
             setDisplayIn(false)
-        }, 500);
+        }, 800);
     }, [])    
 
     const columnEffect = useTrail(1, {    ////handles fade in effect on school projects
@@ -88,7 +76,7 @@ function FormEffectOne() {
                 <animated.div
                     key={0}
                     style={props}
-                    className="container"
+                    className=""
                     id="contact-container"
                 >
                     <Form>
@@ -112,9 +100,9 @@ function FormEffectOne() {
                             <div><FontAwesomeIcon icon={faEnvelope} />   orlando.gonzalez.mtz@gmail.com</div>
                             <hr></hr>                   
                             <div id="social-on-contact" className="text-center">
-                                <FontAwesomeIcon icon={faFacebook} size='2x'/>
-                                <FontAwesomeIcon icon={faInstagram} size='2x'/>
-                                <FontAwesomeIcon icon={faGithub} size='2x'/>
+                                <FontAwesomeIcon icon={faFacebook}/>
+                                <FontAwesomeIcon icon={faInstagram}/>
+                                <FontAwesomeIcon icon={faGithub}/>
                             </div> 
 
                         </div>

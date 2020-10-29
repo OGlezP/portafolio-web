@@ -1,6 +1,5 @@
-import React  from "react";
+import React, {useState}  from "react";
 import { useLocation } from 'react-router-dom';
-// import ReactDOM from 'react-dom';
 import {
   Link
 } from "react-router-dom";
@@ -9,69 +8,89 @@ import Nav from 'react-bootstrap/Nav';
 import '../App.css';
 
 
-function NavElement({firstProjects, firstContact}) {
+function NavElement({firstHome, firstProjects, firstContact}) {
   let location = useLocation();
   let currentLocation = location.pathname;
+  const [expandedMenu, setExpandedMenu] = useState(false);
 
   function mouseOverMenuLink(e) {
     e.preventDefault();  
     let currentLink = e.currentTarget;
   
     if(e.type === "mouseover") {
-      currentLink.nextElementSibling.classList.add('transform-underline');
+      currentLink.children[0].classList.add('transform-underline');
     } 
      if (e.type === "mouseleave") {
-      currentLink.nextElementSibling.classList.remove('transform-underline');
+      currentLink.children[0].classList.remove('transform-underline');
     }
   }
 
+  function clickControlAndNavbarExpansion(e) {
+    const _eTarget = e.target.innerText;
+
+    if(_eTarget === 'HOME') {
+      setTimeout(() => { firstHome(true) }, 400);
+    }
+
+    if(_eTarget === 'PROJECTS') {
+      setTimeout(() => { firstProjects(true) }, 400);
+    }
+
+    if(_eTarget === 'CONTACT') {
+      setTimeout(() => { firstContact(true) }, 400)
+    }
+
+    setTimeout(() => {setExpandedMenu(false)}, 600)
+  }
+
   return (
-    <Navbar className='border-bottom transparent' expand="lg">
-              <Navbar.Brand>Orlando Glez</Navbar.Brand>
-              <Navbar.Toggle aria-controls="navbarNav" />     
-              <Navbar.Collapse id="navbarNav">
-                
-              
-    <Nav className="ml-auto">
-        <div className="nav-link-wrapper">
-            <Link 
-              className='nav-link'
-              to="/" 
-              onMouseOver={currentLocation === '/' ? (() => {}) : mouseOverMenuLink} 
-              onMouseLeave={currentLocation === '/' ? (() => {}) : mouseOverMenuLink}>
-                Home
-            </Link>
-            <div className={currentLocation === "/" ? 'menu-link-underline active-link' : 'menu-link-underline'}></div>
-        </div>
-
-        <div className="nav-link-wrapper">
-            <Link  
-              className='nav-link' 
-              to="/Projects" 
-              
-              onClick={() => setTimeout(() => {firstProjects(true)}, 500)}
-              onMouseOver={currentLocation === '/Projects' ? (() => {}) : mouseOverMenuLink} 
-              onMouseLeave={currentLocation === '/Projects' ? (() => {}) : mouseOverMenuLink}>
-                Projects
-            </Link>
-            <div className={currentLocation === "/Projects" ? 'menu-link-underline active-link' : 'menu-link-underline'}></div>
-        </div>
-
-        <div className="nav-link-wrapper">
-            <Link  
+    <Navbar className='border-bottom p-0' expanded={expandedMenu}  expand="lg" fixed="top">
+      <Navbar.Brand  href="/">
+          <img src={"./img/logo/logo-oglez-portafolio.png"}></img>
+      </Navbar.Brand>
+      <Navbar.Toggle 
+        aria-controls="navbarNav" 
+        onClick={() => setExpandedMenu(expandedMenu ? false : "expanded")}
+        className={expandedMenu ? "openIcon" : "closedIcon"}
+      />     
+      {/* <div aria-controls="navbarNav" onClick={() => setExpandedMenu(expandedMenu ? false : "expanded")}>
+        <div>_</div>
+        <div>_</div>
+        <div>_</div>
+      </div>       */}
+      <Navbar.Collapse id="navbarNav">    
+        <Nav className="ml-auto">
+          <Link 
+            className='nav-link'
+            to="/" 
+            onMouseOver={currentLocation === '/' ? (() => {}) : mouseOverMenuLink} 
+            onMouseLeave={currentLocation === '/' ? (() => {}) : mouseOverMenuLink}
+            onClick={clickControlAndNavbarExpansion}>
+              Home
+              <div className={currentLocation === "/" ? 'menu-link-underline active-link' : 'menu-link-underline'}></div>
+          </Link>
+          <Link  
+            className='nav-link' 
+            to="/Projects" 
+            onClick={clickControlAndNavbarExpansion}
+            onMouseOver={currentLocation === '/Projects' ? (() => {}) : mouseOverMenuLink} 
+            onMouseLeave={currentLocation === '/Projects' ? (() => {}) : mouseOverMenuLink}
+            >
+              Projects
+              <div className={currentLocation === "/Projects" ? 'menu-link-underline active-link' : 'menu-link-underline'}></div>
+          </Link>
+          <Link  
             className='nav-link'
             to="/Contact"  
-
-            onClick={() => setTimeout(() => {firstContact(true)}, 500)}
+            onClick={clickControlAndNavbarExpansion}
             onMouseOver={currentLocation === '/Contact' ? (() => {}) : mouseOverMenuLink} 
             onMouseLeave={currentLocation === '/Contact' ? (() => {}) : mouseOverMenuLink}>
-                Contact
-            </Link>
-            <div className={currentLocation === "/Contact" ? 'menu-link-underline active-link' : 'menu-link-underline'}></div>
-        </div>
-    </Nav>
-    </Navbar.Collapse>
-            </Navbar>
+              Contact
+              <div className={currentLocation === "/Contact" ? 'menu-link-underline active-link' : 'menu-link-underline'}></div>
+          </Link>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
   );
 }
 

@@ -4,25 +4,29 @@
             "id": 0,
             "src": "/img/img-projects/cosmosonidos.png",
             "title": "cosmosonidos.com",
-            "web_techonologies": "HTML + SASS + Bootstrap + Js"
+            "web_techonologies": "HTML + SASS + Bootstrap + Js",
+            "link": "http://www.cosmosonidos.com/"
         },
         {
             "id": 1,
             "src": "/img/img-projects/oglezp-portafolio.png",
             "title": "oglez.com",
-            "web_techonologies": "React Js + SASS + Bootstrap"
+            "web_techonologies": "React Js + SASS + Bootstrap",
+            "link": "https://oglez.com/"
         },
         {
             "id": 2,
             "src": "/img/img-projects/iias-site.png",
             "title": "institutoiias.com",
-            "web_techonologies": "HTML + SASS + Bootstrap + Js + JQuery"
+            "web_techonologies": "HTML + SASS + Bootstrap + Js + JQuery",
+            "link": "https://institutoiias.com/"
         },
         {
             "id": 3,
             "src": "/img/img-projects/oglez-music-photo.png",
             "title": "oglez-musicphoto.com",
-            "web_techonologies": "Wordpress (HTML + Css + PHP + Js)"
+            "web_techonologies": "Wordpress (HTML + Css + PHP + Js)",
+            "link": "http://oglez-test-hosting-com.stackstaging.com/"
         }
     ]
 }

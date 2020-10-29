@@ -21,6 +21,7 @@ function App() {
   // let [prevURL, setPrevURL] = useState('');
   let [initialLoader, setInitialLoader] = useState(false);
   let [firstLoad, setFirstLoad] = useState(false);
+  let [firstClickHome, setFirstClickHome] = useState(false);
   let [firstClickProjects, setFirstClickProjects] = useState(false);
   let [firstClickContact, setFirstClickContact] = useState(false);
 
@@ -40,23 +41,28 @@ function App() {
 
 
   useEffect(() => {
+    setTimeout(() => {
+      setFirstLoad(true);
+    }, 1200);
+
       if(url === '/Projects') {
-        setTimeout(() => {
-          setFirstLoad(true);
-        }, 1200);
+        // setTimeout(() => {
+        //   setFirstLoad(true);
+        // }, 1200);
         setFirstClickProjects(true);
         
       }
       if(url === '/Contact') {
-        setTimeout(() => {
-          setFirstLoad(true);
-        }, 1200);
+        // setTimeout(() => {
+        //   setFirstLoad(true);
+        // }, 1200);
         setFirstClickContact(true);
       }
       if(url === '/') {
-        setTimeout(() => {
-          setFirstLoad(true);
-        }, 1200);
+        // setTimeout(() => {
+        //   setFirstLoad(true);
+        // }, 1200);
+        setFirstClickHome(true);
       }
 
     setTimeout(() => {
@@ -82,6 +88,7 @@ function App() {
       return (
         <div id="absolute-wrapper">
           <NavElement 
+            firstHome={homeClicked => setFirstClickHome(homeClicked)}
             firstProjects={firstClick => setFirstClickProjects(firstClick)}
             firstContact={firstClicked => setFirstClickContact(firstClicked)} 
           />
@@ -91,7 +98,9 @@ function App() {
                 <div id="section-wrapper">
                   <Switch location={item}>
                     <Route path="/" exact render={() => 
-                      <Home first={firstLoad} />
+                      <Home 
+                        first={firstLoad} 
+                        homeClicked={firstClickHome}/>
                     }/>
                     <Route  path="/Projects" render={() =>
                       <Projects

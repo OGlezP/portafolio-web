@@ -7,6 +7,7 @@ import Row from "react-bootstrap/Row";
 import { animated, useTrail } from 'react-spring';
 import ColsInProjects from './colsInProjects';
 import ColsInProjectsFixed from './colsInProjectsFixed';
+import ReactLoading from 'react-loading';
 
 
 function Projects(props) {  
@@ -17,7 +18,6 @@ function Projects(props) {
     const [freelanceError, setFreelanceError] = useState(null);
     const [freelanceProjects, setFreelanceProjects] = useState([]);
     const [toggle, set] = useState(true);
-
     const [hiddenSect, setHiddenSect] = useState(false);
 
     useEffect(() => {    //handles scroll to display school projects
@@ -65,18 +65,17 @@ function Projects(props) {
             }
         );
 
-        (!props.first || !props.firstClick) ? setHiddenSect(false) : setHiddenSect(true);
 
+        (!props.first || !props.firstClick) ? (setHiddenSect(false)) : (setHiddenSect(true));
     }, [])
 
     const trail =  useTrail(items.length, {    ////handles fade in effect on school projects
         opacity: toggle ? 0 : 1,
-        transition: 'opacity .3s',
-        transform: toggle ? 'translateY(20%)' : 'translateY(0)',
-        from: {transform: 'translateY(20%)'},        
+        transform: toggle ? 'translateY(30%)' : 'translateY(0)',
+        from: {transform: 'translateY(30%)'},        
     })
 
-    const backimg = "./img/title-background/back-title.png"
+    const backimg = "./img/title-background/back-title.jpg"
 
     const backHeaderStyle = {
         backgroundImage: "url(" + backimg + ")",
@@ -90,69 +89,61 @@ function Projects(props) {
         left: 0,
     };
 
-    if(hiddenSect) {
-        return (
-            <div id="section-projects" >
-                <div className="title-container"> 
-                {/* back-img-projects style-bk-img */}
-                    <div className="" style={backHeaderStyle}></div>
-                    <div className="txt-wrapper">
-                        <h1 className="title-section">Portfolio</h1>
-                        <p id="title-section-text">Here are some works as a freelance and some excersice at freecodecamp.org</p>
-                    </div>
-                </div>
-                <div className="projects">
-                    <ColsInProjectsFixed projects={freelanceProjects}></ColsInProjectsFixed>
-                </div>
-                <Container  className="text-center school-project-wrapper">
-                    <h4 className={toggle ? 'hidden-subtitle' : ''}>At FreeCodeCamp.org</h4>
-                    <Row >
-                        {trail.map((props, index) => (
-                            <animated.div
-                                key={items[index].id}
-                                style={props}
-                                className="col-sm-3"
-                            >
-                            <img src={items[index].src} alt={items[index].title}></img>
-                                <div>{items[index].title}</div>    
-                            </animated.div>
-                    ))}
-                    </Row>
-                </Container>
-            </div>
-        );
-    } else {
-        return (
-            <div id="section-projects" >
-                <div className="title-container">
-                    {/* <div className="back-img-projects style-bk-img"></div> */}
-                    <div className="" style={backHeaderStyle}></div>
-                    <div className="txt-wrapper">
-                        <h1 className="title-section">Portfolio</h1>
-                        <p id="title-section-text">Here are some works as a freelance and some excersice at freecodecamp.org</p>
-                    </div>
-                </div>
-                <div className="projects">
-                    <ColsInProjects projects={freelanceProjects} hidden={hiddenSect}></ColsInProjects>               
-                </div>
-                <Container  className="text-center school-project-wrapper">
-                    <h4 className={toggle ? 'hidden-subtitle' : ''}>At FreeCodeCamp.org</h4>
-                    <Row >
-                        {trail.map((props, index) => (
-                            <animated.div
-                                key={items[index].id}
-                                style={props}
-                                className="col-sm-3"
-                            >
-                            <img src={items[index].src} alt={items[index].title}></img>
-                                <div>{items[index].title}</div>    
-                            </animated.div>
-                    ))}
-                    </Row>
-                </Container>
-            </div>
-        );
+    function showProjectInfo(e) {
+        let current = e.target.offsetParent.childNodes[1];
+        let current_project = current.lastElementChild;
+
+        e.type == "mouseover" ? current_project.classList.add("proj-info-hidden") : current_project.classList.remove("proj-info-hidden");
     }
+
+    return (
+        <div id="section-projects" >
+            <div className="title-container"> 
+                <div className="" style={backHeaderStyle}></div>
+                <div className="txt-wrapper">
+                    <h1 className="title-section">Portfolio</h1>
+                    <p id="title-section-text">Here are some works as a freelance and some excersice at freecodecamp.org</p>
+                </div>
+            </div>
+            <div className="projects">
+                {
+                (hiddenSect) ? 
+                    (<ColsInProjectsFixed projects={freelanceProjects}></ColsInProjectsFixed>) : 
+                    (<ColsInProjects projects={freelanceProjects} hidden={hiddenSect}></ColsInProjects> )
+                }
+            </div>
+            <Container  className="text-center school-project-wrapper">
+                <h4 className={toggle ? 'hidden-subtitle' : ''}>At FreeCodeCamp.org</h4>
+                <Row className="justify-content-md-center">
+                    {trail.map((props, index) => (
+                        <animated.div
+                            key={items[index].id}
+                            style={props}
+                            className="col-sm-4"
+                        >
+                            <a className="mose-over-layer" 
+                                onMouseOver={showProjectInfo}
+                                onMouseLeave={showProjectInfo}
+                                href={items[index].link} 
+                                target="_blank" >
+                            </a>
+                                    
+                            <div className="project-wrapper">
+                                <div className="image">
+                                    <img src={items[index].src} alt={items[index].title}  ></img>
+                                </div>
+                                <div className="proj-info-wrapper">
+                                    <div>{items[index].title}</div>    
+                                    <div>{items[index].web_techonologies}</div>   
+                                </div>
+                            </div>
+                            
+                        </animated.div>
+                    ))}
+                </Row>
+            </Container>
+        </div>
+    );
 }
 
 export default Projects;

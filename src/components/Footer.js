@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebook } from "@fortawesome/free-brands-svg-icons";
+import { faFacebook, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
@@ -20,9 +20,18 @@ function Footer(props) {
             <div className={footerLoad ? "foot-cont" : "foot-cont footer-first-enter"}>
                 <span className="name">&copy; 2020 - OGLEZP</span>
                 <div className="social-icons-footer">
-                    <FontAwesomeIcon className="icons-footer" icon={faFacebook} />
-                    <FontAwesomeIcon className="icons-footer" icon={faInstagram} />
-                    <FontAwesomeIcon className="icons-footer" icon={faGithub} />
+                    <a href={"https://github.com/OGlezP"} target="_blank">
+                        <FontAwesomeIcon className="icons-footer" icon={faGithub} />
+                    </a>
+                    <a href={"https://www.linkedin.com/in/orlando-gonzalez-62762218b/"} target="_blank">
+                        <FontAwesomeIcon className="icons-footer" icon={faLinkedinIn}/>
+                    </a>
+                    <a href={"https://www.instagram.com/oglezp/"} target="_blank">
+                        <FontAwesomeIcon className="icons-footer" icon={faFacebook} />
+                    </a>
+                    <a href={"https://www.facebook.com/OGlezP"} target="_blank">
+                        <FontAwesomeIcon className="icons-footer" icon={faInstagram} />
+                    </a>
                 </div>
             </div>
         </footer>

@@ -26,23 +26,30 @@ function ColsInProjectsFixed(props) {
                     style={prop}
                     className="columna col-md text-center"
                 >
-                    <div className='hover-layer' onMouseOver={hoverEffect} onMouseLeave={hoverEffect}></div>
+                <a className='hover-layer' 
+                    onMouseOver={hoverEffect} 
+                    onMouseLeave={hoverEffect} 
+                    href={props.projects[index].link}
+                    target="_blank">
+                </a>
                 <div className="project-info">
                     <div className="img">
                         <img src={props.projects[index].src} alt=""></img>
                     </div>
-                    <div className="project-web">
-                        <FontAwesomeIcon icon={faGlobe } > </FontAwesomeIcon>
-                        <span> </span> {props.projects[index].title}
+                    <div className="project-web-info">
+                        <div>
+                            <FontAwesomeIcon icon={faGlobe } > </FontAwesomeIcon>
+                            <span> </span> {props.projects[index].title}
+                        </div>
+                        <hr></hr>
+                        <div>
+                            <FontAwesomeIcon icon={faCode}></FontAwesomeIcon>
+                            <span> </span> {props.projects[index].web_techonologies}
+                        </div>
                     </div>
-                    <div className="project-tech">
-                        <FontAwesomeIcon icon={faCode}></FontAwesomeIcon>
-                        <span> </span> {props.projects[index].web_techonologies}
-                    </div>
-                    
                 </div>   
                 </animated.div>
-                ))}
+            ))}
         </Row>
     );
 }

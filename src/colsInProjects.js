@@ -18,18 +18,16 @@ function ColsInProjects(props) {
     useEffect(() => {
         setTimeout(() => {
             setToggle(false)
-        }, 500);
+        }, 800);
     }, [])    
 
     const columnEffect = useTrail(props.projects.length, {    ////handles fade in effect on school projects
         opacity: toggle ? 0 : 1,
-        transition: "opacity .4s",
-        transform: toggle ? 'translateY(-20%)' : 'translateY(0)',
-        from: {transform: 'translateY(-20%)'},         
+        transform: toggle ? 'translateY(-15%)' : 'translateY(0)',
+        from: {transform: 'translateY(-15%)'},         
     });
 
     return (
-
         <Row className={ "justify-content-md-center no-gutters"}>         
             {columnEffect.map((prop, index) => (
                 <animated.div
@@ -37,18 +35,26 @@ function ColsInProjects(props) {
                     style={prop}
                     className="columna col-md text-center"
                 >
-                <div className='hover-layer' onMouseOver={hoverEffect} onMouseLeave={hoverEffect}></div>
+                <a className='hover-layer' 
+                    onMouseOver={hoverEffect} 
+                    onMouseLeave={hoverEffect} 
+                    href={props.projects[index].link}
+                    target="_blank">
+                </a>
                 <div className="project-info">
                     <div className="img">
                         <img src={props.projects[index].src} alt=""></img>
                     </div>
-                    <div className="project-web">
-                        <FontAwesomeIcon icon={faGlobe } > </FontAwesomeIcon>
-                        <span> </span> {props.projects[index].title}
-                    </div>
-                    <div className="project-tech">
-                        <FontAwesomeIcon icon={faCode}></FontAwesomeIcon>
-                        <span> </span> {props.projects[index].web_techonologies}
+                    <div className="project-web-info">
+                        <div>
+                            <FontAwesomeIcon icon={faGlobe } > </FontAwesomeIcon>
+                            <span> </span> {props.projects[index].title}
+                        </div>
+                        <hr></hr>
+                        <div>
+                            <FontAwesomeIcon icon={faCode}></FontAwesomeIcon>
+                            <span> </span> {props.projects[index].web_techonologies}
+                        </div>
                     </div>
                 </div>   
                 </animated.div>
