@@ -37,14 +37,18 @@ function ColsInProjectsFixed(props) {
                         <img src={props.projects[index].src} alt=""></img>
                     </div>
                     <div className="project-web-info">
-                        <div>
-                            <FontAwesomeIcon icon={faGlobe } > </FontAwesomeIcon>
-                            <span> </span> {props.projects[index].title}
+                         <div>
+                            {props.projects[index].brief_desc}
                         </div>
+                        {/* <div className="divisor"></div> */}
+                        {/* <div>
+                            <FontAwesomeIcon icon={faGlobe }></FontAwesomeIcon>
+                            <span>&nbsp;&nbsp;</span> {props.projects[index].title}
+                        </div> */}
                         <hr></hr>
                         <div>
                             <FontAwesomeIcon icon={faCode}></FontAwesomeIcon>
-                            <span> </span> {props.projects[index].web_techonologies}
+                            <span>&nbsp;&nbsp;</span> {props.projects[index].web_techonologies}
                         </div>
                     </div>
                 </div>   

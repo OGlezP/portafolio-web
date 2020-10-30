@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
 import { animated, useTrail } from 'react-spring';
 
 
@@ -90,7 +91,7 @@ function FormEffectOne() {
                         <Form.Control as="textarea" rows="20" placeholder="message"/>
                     </Form.Group>
                     <Button variant="primary" type="submit">
-                        Send
+                        Submit
                     </Button>
                     </Form>
                     <div id='right-side-form' className="rightSide">  
@@ -100,9 +101,18 @@ function FormEffectOne() {
                             <div><FontAwesomeIcon icon={faEnvelope} />   orlando.gonzalez.mtz@gmail.com</div>
                             <hr></hr>                   
                             <div id="social-on-contact" className="text-center">
-                                <FontAwesomeIcon icon={faFacebook}/>
-                                <FontAwesomeIcon icon={faInstagram}/>
-                                <FontAwesomeIcon icon={faGithub}/>
+                                <a href={"https://github.com/OGlezP"} target="_blank">
+                                    <FontAwesomeIcon icon={faGithub}/>
+                                </a>
+                                <a href={"https://www.linkedin.com/in/orlando-gonzalez-62762218b/"} target="_blank">
+                                    <FontAwesomeIcon icon={faLinkedinIn}/>
+                                </a>
+                                <a href={"https://www.instagram.com/oglezp/"} target="_blank">
+                                    <FontAwesomeIcon icon={faInstagram}/>
+                                </a>
+                                <a href={"https://www.facebook.com/OGlezP"} target="_blank">
+                                    <FontAwesomeIcon icon={faFacebook}/>
+                                </a>
                             </div> 
 
                         </div>

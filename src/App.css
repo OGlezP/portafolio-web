@@ -1,5 +1,33 @@
-@import url("https://fonts.googleapis.com/css2?family=Spicy+Rice&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap");
+@font-face {
+  /*logo and titles*/
+  font-family: 'AlfaSlabOne-Regular';
+  src: local("AlfaSlabOne-Regular"), url(./fonts/AlfaSlabOne-Regular.ttf);
+}
+
+@font-face {
+  /*home paragraphs*/
+  font-family: 'SourceCodePro-Regular';
+  src: local("SourceCodePro-Regular"), url(./fonts/SourceCodePro-Regular.ttf);
+}
+
+@font-face {
+  /*navbar, footer, uppercase subtitles*/
+  font-family: 'Staatliches-Regular';
+  src: local("Staatliches-Regular"), url(./fonts/Staatliches-Regular.ttf);
+}
+
+@font-face {
+  /*sections paragraphs, projects info, form input value*/
+  font-family: 'Dosis';
+  src: local("Dosis"), url(./fonts/Dosis-VariableFont_wght.ttf);
+}
+
+@font-face {
+  /*freecodecamp subtitle, input placeholder*/
+  font-family: 'RobotoSlab-Light';
+  src: local("RobotoSlab-Light"), url(./fonts/RobotoSlab-Light.ttf);
+}
+
 @keyframes initialHomeLoad {
   from {
     opacity: 0;
@@ -84,8 +112,9 @@
   width: 80px;
   text-align: center;
   margin-left: 30px;
-  font-size: 13px;
-  text-transform: uppercase;
+  font-size: 14px;
+  font-family: 'Staatliches-Regular';
+  letter-spacing: 1px;
   height: 100%;
   color: #855a5a;
   transition: all 1s;
@@ -176,8 +205,7 @@
   width: 100%;
   transition: all .4s;
   font-size: 120px;
-  font-family: "Gilroy", sans-serif;
-  font-weight: 900;
+  font-family: "AlfaSlabOne-Regular", sans-serif;
   letter-spacing: 10px;
   border-bottom: 1px solid #424242;
   margin-bottom: 1rem;
@@ -186,7 +214,7 @@
 #row-cont-home .txt-cont .info-txt {
   width: 70%;
   font-size: 22px;
-  font-family: 'Roboto Mono', monospace;
+  font-family: "SourceCodePro-Regular";
   opacity: 1;
   transition: opacity 2s;
 }
@@ -205,7 +233,8 @@
 
 #row-cont-home #social-net h1 {
   font-size: 18px;
-  text-transform: uppercase;
+  font-family: 'Staatliches-Regular';
+  letter-spacing: 2px;
 }
 
 #row-cont-home #social-net .social-icons {
@@ -265,15 +294,16 @@
 
 .title-container .txt-wrapper .title-section {
   font-size: 55px;
-  font-weight: bolder;
   text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: 'AlfaSlabOne-Regular';
 }
 
 .title-container .txt-wrapper #title-section-text {
   font-size: 20px;
-  font-weight: 400;
   margin-top: 10px;
-  letter-spacing: 2;
+  letter-spacing: 1px;
+  font-family: 'Dosis', sans-serif;
 }
 
 .style-bk-img {
@@ -329,6 +359,9 @@
 
 #section-projects .projects .row .columna .project-info .project-web-info {
   padding: 20px;
+  font-family: "Dosis";
+  letter-spacing: 1px;
+  font-weight: 600;
 }
 
 #section-projects .projects .row .columna .hover-layer {
@@ -345,72 +378,41 @@
   transform: scale(1.1);
 }
 
+#section-projects .divisor {
+  width: 20px;
+  height: 2px;
+  background-color: #c08b8b;
+  margin: 10px auto;
+}
+
 #section-projects .school-project-wrapper {
   width: 60%;
-  color: #555555;
-  opacity: 1;
   padding-bottom: 50px;
 }
 
 #section-projects .school-project-wrapper h4 {
-  font-size: 25px;
-  margin-bottom: 30px;
-  text-decoration: underline;
+  font-family: 'RobotoSlab-Light';
+  font-size: 30px;
   transition: all .5s;
+  color: #494949;
 }
 
 #section-projects .school-project-wrapper .hidden-subtitle {
   opacity: 0;
-  transition: all .5s;
+  transition: all .7s;
 }
 
 #section-projects .school-project-wrapper .row {
-  background-color: #bfbfbf;
+  background-color: rgba(214, 214, 214, 0.705);
+  padding: 50px 0;
 }
 
-#section-projects .school-project-wrapper .row .col-sm-4 {
+#section-projects .school-project-wrapper .row .col-sm-5 {
   margin: 10px;
   padding: 0;
-  border: 1px solid #fff;
 }
 
-#section-projects .school-project-wrapper .row .col-sm-4 .project-wrapper {
-  color: #b48080;
-  font-size: 16px;
-  font-weight: 500;
-}
-
-#section-projects .school-project-wrapper .row .col-sm-4 .project-wrapper .image {
-  height: auto;
-  overflow: hidden;
-  border: #ffebe2 solid 1px;
-}
-
-#section-projects .school-project-wrapper .row .col-sm-4 .project-wrapper .image img {
-  width: 100%;
-}
-
-#section-projects .school-project-wrapper .row .col-sm-4 .project-wrapper .proj-info-wrapper {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background-color: #3e465f;
-  opacity: 0;
-  transition: all .6s;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-#section-projects .school-project-wrapper .row .col-sm-4 .project-wrapper .proj-info-hidden {
-  opacity: 1;
-  transition: all .6s;
-}
-
-#section-projects .school-project-wrapper .row .col-sm-4 .mose-over-layer {
+#section-projects .school-project-wrapper .row .col-sm-5 .mose-over-layer {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -420,13 +422,61 @@
   cursor: pointer;
 }
 
+#section-projects .school-project-wrapper .row .col-sm-5 .project-wrapper .image {
+  height: auto;
+  overflow: hidden;
+  border: #ffebe2 solid 2px;
+}
+
+#section-projects .school-project-wrapper .row .col-sm-5 .project-wrapper .image img {
+  width: 100%;
+}
+
+#section-projects .school-project-wrapper .row .col-sm-5 .project-wrapper .proj-info-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #526982;
+  border: #65798d solid 1px;
+  opacity: 0;
+  transition: all .6s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#section-projects .school-project-wrapper .row .col-sm-5 .project-wrapper .proj-info-wrapper .text-inf {
+  width: 70%;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-family: "Dosis";
+  color: #8ac7c6;
+}
+
+#section-projects .school-project-wrapper .row .col-sm-5 .project-wrapper .proj-info-wrapper .line {
+  background-color: #6d9796;
+  width: 80%;
+  height: 1px;
+}
+
+#section-projects .school-project-wrapper .row .col-sm-5 .project-wrapper .proj-info-hidden {
+  opacity: 1;
+  transition: opacity .6s;
+  box-shadow: -5px 5px 8px 0 rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: -5px 5px 8px 0 rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -5px 5px 8px 0 rgba(0, 0, 0, 0.75);
+}
+
 /***********projects page*********/
 #contact-container {
   background-color: #ffffff;
   -webkit-box-shadow: -2px -2px 13px 1px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: -2px -2px 13px 1px rgba(0, 0, 0, 0.75);
   box-shadow: -2px -2px 13px 1px rgba(0, 0, 0, 0.75);
-  color: #704643;
   border-radius: 5px;
   padding: 10px;
   position: relative;
@@ -452,12 +502,15 @@
 
 #contact-container form .form-group .form-control {
   background-color: #ffffff;
+  color: #354583;
+  font-family: 'Dosis';
+  font-weight: 600;
+  letter-spacing: 1px;
   font-size: 16px;
-  font-weight: 500;
   height: 40px;
   border: 0;
   border-bottom: 1px solid #e6dfdf;
-  border-radius: 10px;
+  border-radius: 7px;
 }
 
 #contact-container form .form-group .form-control:focus {
@@ -469,8 +522,10 @@
 }
 
 #contact-container form .form-group .form-control::placeholder {
-  color: #d8bdbd;
-  font-weight: 600;
+  color: #a7a7a7;
+  font-size: 12px;
+  font-family: "RobotoSlab-Light";
+  letter-spacing: 1px;
   text-transform: uppercase;
 }
 
@@ -489,7 +544,8 @@
   width: 80px;
   height: 40px;
   letter-spacing: 3px;
-  font-size: 15px;
+  font-size: 14px;
+  font-family: 'Staatliches-Regular';
   font-weight: 700;
   background-color: #284774;
   transition: all .3s;
@@ -508,28 +564,36 @@
 
 #contact-container #right-side-form {
   background-color: #cad2da;
-  color: #284774;
+  color: #344f77;
   width: auto;
   margin: auto auto;
   padding: 20px;
 }
 
 #contact-container #right-side-form #right-info {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: bolder;
-  font-family: 'Roboto Mono', monospace;
+  font-family: 'RobotoSlab-Light';
 }
 
 #contact-container #right-side-form #right-info div {
-  margin: 1rem 0;
+  margin: 1.5rem 0;
 }
 
 #contact-container #right-side-form #right-info svg {
   margin: 0 1rem;
 }
 
-#contact-container #right-side-form #right-info #social-on-contact svg {
+#contact-container #right-side-form #right-info #social-on-contact a {
+  color: #344f77;
+}
+
+#contact-container #right-side-form #right-info #social-on-contact a svg {
   font-size: 20px;
+}
+
+#contact-container #right-side-form #right-info #social-on-contact a:hover {
+  color: #a75b5b;
 }
 
 @keyframes load-footer {
@@ -576,6 +640,8 @@
 #footer {
   width: 100%;
   height: 50px;
+  font-family: 'Staatliches-Regular';
+  letter-spacing: 1px;
 }
 
 #footer .foot-cont {
@@ -585,6 +651,7 @@
   font-size: 16px;
   font-weight: 500;
   transition: all .6s;
+  color: #616161;
 }
 
 #footer .foot-cont .name {
@@ -661,16 +728,13 @@
     font-size: 14px;
   }
   #section-projects .projects .row .columna .project-info .project-web-info {
-    padding: 10px;
-  }
-  #section-projects .school-project-wrapper {
-    width: 60%;
+    padding: 8px;
   }
   #section-projects .school-project-wrapper h4 {
-    font-size: 20px;
+    font-size: 25px;
   }
-  #section-projects .school-project-wrapper .col-sm-6 div {
-    font-size: 14px;
+  #section-projects .school-project-wrapper .row .col-sm-5 .project-wrapper .proj-info-wrapper .text-inf {
+    font-size: 15px;
   }
   #contact-container {
     width: 90%;
@@ -763,21 +827,20 @@
   #section-projects .projects .row .columna .project-info .project-web-info {
     padding: 10px;
   }
+  #section-projects .divisor {
+    width: 15px;
+    height: 1px;
+    margin: 5px auto;
+  }
   #section-projects .school-project-wrapper {
-    width: 70%;
-  }
-  #section-projects .school-project-wrapper h4 {
-    font-size: 18px;
-  }
-  #section-projects .school-project-wrapper .col-sm-6 {
-    padding: 0 5px 30px;
-  }
-  #section-projects .school-project-wrapper .col-sm-6 div {
-    font-size: 13px;
+    width: 80%;
   }
   #contact-container form .form-group .form-control {
     font-size: 13px;
     height: 30px;
+  }
+  #contact-container form .form-group .form-control::placeholder {
+    font-size: 11px;
   }
   #contact-container form .form-group textarea {
     min-height: 150px;
@@ -791,7 +854,7 @@
     width: 120px;
   }
   #contact-container #right-side-form {
-    width: auto;
+    width: 40%;
     padding: 10px;
   }
   #contact-container #right-side-form #right-info {
@@ -800,7 +863,10 @@
   #contact-container #right-side-form #right-info svg {
     margin: 0 3px;
   }
-  #contact-container #right-side-form #right-info #social-on-contact svg {
+  #contact-container #right-side-form #right-info #social-on-contact a {
+    margin: 0 10px;
+  }
+  #contact-container #right-side-form #right-info #social-on-contact a svg {
     font-size: 18px;
   }
   #footer .foot-cont {
@@ -924,20 +990,23 @@
     align-items: center;
     flex-direction: column;
   }
+  #section-projects .divisor {
+    margin: 8px auto;
+  }
   #section-projects .school-project-wrapper {
-    width: 100%;
+    width: 80%;
   }
   #section-projects .school-project-wrapper h4 {
     font-size: 3rem;
   }
-  #section-projects .school-project-wrapper .col-sm-6 {
-    padding: 0 5px 20px;
+  #section-projects .school-project-wrapper .row {
+    padding: 2.5rem;
   }
-  #section-projects .school-project-wrapper .col-sm-6 img {
-    width: 50%;
+  #section-projects .school-project-wrapper .row .col-sm-5 {
+    margin: 10px auto;
   }
-  #section-projects .school-project-wrapper .col-sm-6 div {
-    font-size: 2.3rem;
+  #section-projects .school-project-wrapper .row .col-sm-5 .project-wrapper .proj-info-wrapper .text-inf {
+    font-size: 2rem;
   }
   #contact-container {
     width: 90%;
@@ -953,6 +1022,9 @@
   #contact-container form .form-group .form-control {
     font-size: 2.2rem;
   }
+  #contact-container form .form-group .form-control::placeholder {
+    font-size: 1.8rem;
+  }
   #contact-container form .form-group textarea {
     min-height: 80px;
   }
@@ -963,6 +1035,7 @@
     width: 90px;
   }
   #contact-container #right-side-form {
+    width: 70%;
     padding: 8px;
   }
   #contact-container #right-side-form #right-info {
@@ -971,8 +1044,11 @@
   #contact-container #right-side-form #right-info svg {
     margin: 0 5px;
   }
-  #contact-container #right-side-form #right-info #social-on-contact svg {
-    font-size: 3rem;
+  #contact-container #right-side-form #right-info #social-on-contact a {
+    margin: 0 5px;
+  }
+  #contact-container #right-side-form #right-info #social-on-contact a svg {
+    font-size: 2.5rem;
   }
   #footer .foot-cont {
     font-size: 11px;
@@ -1016,6 +1092,12 @@
   }
 }
 
+@media screen and (max-width: 575px) {
+  #section-projects .school-project-wrapper {
+    width: 65%;
+  }
+}
+
 @media screen and (max-width: 330px) {
   html {
     font-size: calc(5px + (4) * ((100vw - 320px) / (1600 - 300)));
@@ -1034,5 +1116,20 @@
   }
   #row-cont-home #social-net .social-icons .col-icon a svg {
     font-size: 12px;
+  }
+  #contact-container form .form-group .form-control {
+    font-size: 2.3rem;
+  }
+  #contact-container form .form-group .form-control::placeholder {
+    font-size: 1.7rem;
+  }
+  #contact-container form button {
+    font-size: 9px;
+  }
+  #contact-container #right-side-form {
+    width: 80%;
+  }
+  #contact-container #right-side-form #right-info {
+    font-size: 1.8rem;
   }
 }

@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Container from "react-bootstrap/container";
 import Row from "react-bootstrap/Row";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faGlobe } from "@fortawesome/free-solid-svg-icons";
-// import { faCode } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCode } from "@fortawesome/free-solid-svg-icons";
 import { animated, useTrail } from 'react-spring';
 import ColsInProjects from './colsInProjects';
 import ColsInProjectsFixed from './colsInProjectsFixed';
-import ReactLoading from 'react-loading';
-
 
 function Projects(props) {  
     const url = "/school-projects.json";
@@ -35,7 +32,7 @@ function Projects(props) {
                     console.warm(error);
                 }
             );
-            setTimeout(() => { set(false) }, 300);
+            setTimeout(() => { set(false) }, 500);
         }
 
         const handleScroll = () => {       
@@ -114,12 +111,14 @@ function Projects(props) {
             </div>
             <Container  className="text-center school-project-wrapper">
                 <h4 className={toggle ? 'hidden-subtitle' : ''}>At FreeCodeCamp.org</h4>
+                <div className="divisor"></div>
+
                 <Row className="justify-content-md-center">
                     {trail.map((props, index) => (
                         <animated.div
                             key={items[index].id}
                             style={props}
-                            className="col-sm-4"
+                            className="col-sm-5"
                         >
                             <a className="mose-over-layer" 
                                 onMouseOver={showProjectInfo}
@@ -133,8 +132,9 @@ function Projects(props) {
                                     <img src={items[index].src} alt={items[index].title}  ></img>
                                 </div>
                                 <div className="proj-info-wrapper">
-                                    <div>{items[index].title}</div>    
-                                    <div>{items[index].web_techonologies}</div>   
+                                    <div className="text-inf">{items[index].title}</div>    
+                                    <div className="line"></div>
+                                    <div className="text-inf"><FontAwesomeIcon icon={faCode}></FontAwesomeIcon><span> </span>{items[index].web_techonologies}</div>   
                                 </div>
                             </div>
                             
