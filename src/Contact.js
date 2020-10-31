@@ -80,19 +80,19 @@ function FormEffectOne() {
                     className=""
                     id="contact-container"
                 >
-                    <Form>
-                    <Form.Group controlId="exampleForm.ControlInput1">
-                        <Form.Control type="email" placeholder="E-mail" />
-                    </Form.Group>
-                    <Form.Group controlId="exampleForm.ControlInput1">
-                        <Form.Control type="email" placeholder="Name" />
-                    </Form.Group>
-                    <Form.Group controlId="exampleForm.ControlTextarea1">
-                        <Form.Control as="textarea" rows="20" placeholder="message"/>
-                    </Form.Group>
-                    <Button variant="primary" type="submit">
-                        Submit
-                    </Button>
+                    <Form name="contact" method="POST" data-netlify="true">
+                        <Form.Group controlId="exampleForm.ControlInput1">
+                            <Form.Control type="email" placeholder="E-mail" />
+                        </Form.Group>
+                        <Form.Group controlId="exampleForm.ControlInput1">
+                            <Form.Control type="email" placeholder="Name" />
+                        </Form.Group>
+                        <Form.Group controlId="exampleForm.ControlTextarea1">
+                            <Form.Control as="textarea" rows="20" placeholder="message"/>
+                        </Form.Group>
+                        <Button variant="primary" type="submit">
+                            Submit
+                        </Button>
                     </Form>
                     <div id='right-side-form' className="rightSide">  
                         <div id="right-info"> 
