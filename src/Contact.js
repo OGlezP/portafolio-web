@@ -80,7 +80,7 @@ function FormEffectOne() {
                     className=""
                     id="contact-container"
                 >
-                    <Form name="contact" method="POST" data-netlify="true">
+                    <Form name="contact" netlify netlify-honeypot="bot-field" hidden>
                         <Form.Group controlId="exampleForm.ControlInput1">
                             <Form.Control type="email" placeholder="E-mail" />
                         </Form.Group>
@@ -141,7 +141,7 @@ function FormEffectTwo() {
                     className="container"
                     id="contact-container"
                 >
-                    <Form>
+                    <Form name="contact" netlify netlify-honeypot="bot-field" hidden>
                     <Form.Group controlId="exampleForm.ControlInput1">
                         <Form.Control type="email" placeholder="E-mail" />
                     </Form.Group>
