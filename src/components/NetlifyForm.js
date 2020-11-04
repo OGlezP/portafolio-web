@@ -69,6 +69,7 @@ const NetlifyForm = ({
     if ((preSubmit && await preSubmit()) || !preSubmit) {
       if (await handleSubmit()) {
         postSubmit && postSubmit()
+        console.log(formValues)
       }
       else {
         // Figure out how to handle this better

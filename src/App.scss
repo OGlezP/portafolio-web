@@ -430,11 +430,14 @@
   margin: 0 auto;
   .alertt-message {
     position: absolute;
-    top: 10%;
-    left: 10%;
-    width: 80%;
-    height: 80%;
     z-index: 3;
+    // .close{
+    //   // font-size: 30px;
+    // }
+    // .alert-heading {
+    //   // background-color: grey;
+    //   // padding: 5px 10px;
+    // }
   }
   form {
     text-align: left;
@@ -1019,6 +1022,18 @@
     flex-direction: column;
     top: -10px;
     margin-bottom: 80px;
+    .alertt-message {
+      font-size: 14px;
+      width: 90%;
+      left: 5%;
+      .close{
+        font-size: 22px;
+      }
+      .alert-heading {
+        font-size: 18px;
+        margin-right: 20px;
+      }
+    }
     form {
       width: 100%;
       margin-bottom: 10px;
@@ -1151,6 +1166,16 @@
   }
 
   #contact-container {
+    .alertt-message {
+      font-size: 12px;
+      .close{
+        font-size: 20px;
+      }
+      .alert-heading {
+        font-size: 15px;
+        margin-right: 10px;
+      }
+    }
     form {
       .form-group {
         .form-control {

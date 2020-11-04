@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { faCodepen } from "@fortawesome/free-brands-svg-icons";
 
 function Footer(props) {
     let [footerLoad, setFooterLoad] = useState();
@@ -31,6 +32,9 @@ function Footer(props) {
                     </a>
                     <a href={"https://www.facebook.com/OGlezP"} target="_blank">
                         <FontAwesomeIcon className="icons-footer" icon={faInstagram} />
+                    </a>
+                    <a href={"https://codepen.io/oglezp"} target="_blank">
+                        <FontAwesomeIcon icon={faCodepen}/>
                     </a>
                 </div>
             </div>

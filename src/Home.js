@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { faCodepen } from "@fortawesome/free-brands-svg-icons";
 
 function Home(props) {
     console.log('home', props.first)
@@ -48,6 +49,11 @@ function Home(props) {
                     <Col  className="col-icon">
                         <a href={"https://www.facebook.com/OGlezP"} target="_blank">
                             <FontAwesomeIcon icon={faFacebook}/>
+                        </a>
+                    </Col>
+                    <Col  className="col-icon">
+                        <a href={"https://codepen.io/oglezp"} target="_blank">
+                            <FontAwesomeIcon icon={faCodepen}/>
                         </a>
                     </Col>
                 </Row>

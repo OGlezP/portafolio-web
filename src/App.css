@@ -489,10 +489,6 @@
 
 #contact-container .alertt-message {
   position: absolute;
-  top: 10%;
-  left: 10%;
-  width: 80%;
-  height: 80%;
   z-index: 3;
 }
 
@@ -1024,6 +1020,18 @@
     top: -10px;
     margin-bottom: 80px;
   }
+  #contact-container .alertt-message {
+    font-size: 14px;
+    width: 90%;
+    left: 5%;
+  }
+  #contact-container .alertt-message .close {
+    font-size: 22px;
+  }
+  #contact-container .alertt-message .alert-heading {
+    font-size: 18px;
+    margin-right: 20px;
+  }
   #contact-container form {
     width: 100%;
     margin-bottom: 10px;
@@ -1126,6 +1134,16 @@
   }
   #row-cont-home #social-net .social-icons .col-icon a svg {
     font-size: 12px;
+  }
+  #contact-container .alertt-message {
+    font-size: 12px;
+  }
+  #contact-container .alertt-message .close {
+    font-size: 20px;
+  }
+  #contact-container .alertt-message .alert-heading {
+    font-size: 15px;
+    margin-right: 10px;
   }
   #contact-container form .form-group .form-control {
     font-size: 2.3rem;
