@@ -1,5 +1,6 @@
 {
   "files": {
+<<<<<<< HEAD
     "main.css": "/static/css/main.43d55113.chunk.css",
     "main.js": "/static/js/main.c6b1b0ff.chunk.js",
     "main.js.map": "/static/js/main.c6b1b0ff.chunk.js.map",
@@ -14,13 +15,36 @@
     "static/css/2.5b44f0a0.chunk.css.map": "/static/css/2.5b44f0a0.chunk.css.map",
     "static/css/main.43d55113.chunk.css.map": "/static/css/main.43d55113.chunk.css.map",
     "static/js/2.1c72e3d1.chunk.js.LICENSE.txt": "/static/js/2.1c72e3d1.chunk.js.LICENSE.txt",
+=======
+    "main.css": "/static/css/main.66c8fdb7.chunk.css",
+    "main.js": "/static/js/main.45978839.chunk.js",
+    "main.js.map": "/static/js/main.45978839.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.6a1508d6.js",
+    "runtime-main.js.map": "/static/js/runtime-main.6a1508d6.js.map",
+    "static/css/2.de424728.chunk.css": "/static/css/2.de424728.chunk.css",
+    "static/js/2.30f17c6b.chunk.js": "/static/js/2.30f17c6b.chunk.js",
+    "static/js/2.30f17c6b.chunk.js.map": "/static/js/2.30f17c6b.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.ba47cfac32239d69cbe1d0c7c5053f23.js": "/precache-manifest.ba47cfac32239d69cbe1d0c7c5053f23.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.de424728.chunk.css.map": "/static/css/2.de424728.chunk.css.map",
+    "static/css/main.66c8fdb7.chunk.css.map": "/static/css/main.66c8fdb7.chunk.css.map",
+    "static/js/2.30f17c6b.chunk.js.LICENSE.txt": "/static/js/2.30f17c6b.chunk.js.LICENSE.txt",
+>>>>>>> 41c3f4bf7a668c97316a7b4651fda58e744c6135
     "static/media/App.css": "/static/media/Staatliches-Regular.d5746e3b.ttf"
   },
   "entrypoints": [
     "static/js/runtime-main.6a1508d6.js",
+<<<<<<< HEAD
     "static/css/2.5b44f0a0.chunk.css",
     "static/js/2.1c72e3d1.chunk.js",
     "static/css/main.43d55113.chunk.css",
     "static/js/main.c6b1b0ff.chunk.js"
+=======
+    "static/css/2.de424728.chunk.css",
+    "static/js/2.30f17c6b.chunk.js",
+    "static/css/main.66c8fdb7.chunk.css",
+    "static/js/main.45978839.chunk.js"
+>>>>>>> 41c3f4bf7a668c97316a7b4651fda58e744c6135
   ]
 }
