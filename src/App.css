@@ -487,6 +487,15 @@
   margin: 0 auto;
 }
 
+#contact-container .alertt-message {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  z-index: 3;
+}
+
 #contact-container form {
   text-align: left;
   position: relative;
@@ -568,6 +577,7 @@
   width: auto;
   margin: auto auto;
   padding: 20px;
+  position: relative;
 }
 
 #contact-container #right-side-form #right-info {

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Form from 'react-bootstrap/Form'
+import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button'
+import Alert from 'react-bootstrap/Alert';
 import { faMapMarker } from '@fortawesome/free-solid-svg-icons';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
@@ -10,7 +11,7 @@ import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
 import { animated, useTrail } from 'react-spring';
-
+import NetlifyForm from 'react-ssg-netlify-forms';
 
 function Contact(props) {
     const [toggle, set] = useState(false);
@@ -36,7 +37,6 @@ function Contact(props) {
     return (
         <div id="section-contact">
             <div className="title-container">
-            {/* <div className="back-img-contact style-bk-img"></div> */}
             <div className="" style={backHeaderStyle}></div>
                 <div className="txt-wrapper">
                     <h1 className="title-section">Contacto</h1>
@@ -47,7 +47,6 @@ function Contact(props) {
             (!toggle) ? 
             (<FormEffectOne/>) :
             (<FormEffectTwo/>)}
-            
         </div>
     );
 }
@@ -55,14 +54,17 @@ function Contact(props) {
 export default Contact;
 
 
-
 function FormEffectOne() {
     const [displayIn, setDisplayIn] = useState(true);
+    const [alertMessage, setAlertMessage] = useState([]);
+    const [alertType, setAlertType] = useState('danger');
+    const [show, setShow] = useState(true);
+    let content = [];
 
     useEffect(() => {
         setTimeout(() => {
             setDisplayIn(false)
-        }, 800);
+        }, 900);
     }, [])    
 
     const columnEffect = useTrail(1, {    ////handles fade in effect on school projects
@@ -70,6 +72,79 @@ function FormEffectOne() {
         transform: displayIn ? 'translateY(20%)' : 'translateY(0)',
         from: {transform: 'translateY(20%)'},         
     });
+
+    function AlertMessage() {
+        if (!show) {
+            return (
+                <Alert className={"alertt-message"} variant={alertType} onClose={() => setShow(true)} dismissible>
+                    <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
+                    <p>
+                        {alertMessage[0]}
+                    </p>
+                    <p>
+                        {alertMessage[1]}
+                    </p>
+                    <p>
+                        {alertMessage[2]}
+                    </p>
+                </Alert>
+            );
+        } else {
+            return (
+                <div></div>
+            )
+        }
+    }
+
+    const preSubmit = async () => {
+        if (formValues.email == "") {
+            content.push("please type an email, it wont be shared to anyone");
+            setAlertType('danger');
+        }
+        if (formValues.name == "") {
+            content.push("please type name!");
+        }
+        
+        if (formValues.message == "") {
+            content.push("please write down a message");
+        }
+        if(content.length != 0) {
+            setAlertMessage(content);
+            setTimeout(() => {
+                setShow(false);
+            }, 300);
+
+            return false;
+        } else {
+            await (new Promise(resolve => setTimeout(resolve, 1000)));
+            return true;
+        }
+    }
+
+    // Post-Submit Navigate
+    const postSubmit = () => {
+        // navigate('/hooray')
+        setAlertMessage(["Mensaje enviado"]);
+        setAlertType('success');
+        setTimeout(() => {
+            setShow(false);
+            setFormValues({
+                email: '',
+                name: '',
+                message: ''
+            });
+        }, 300);
+        document.forms[0].reset();
+        document.forms[1].reset();
+    }
+
+    // Simple controlled form setup
+    const handleChange = e => setFormValues({ ...formValues, [e.target.name]: e.target.value })
+    const [formValues, setFormValues] = useState({
+        email: '',
+        name: '',
+        message: ''
+    })
 
     return(
         <div>
@@ -80,20 +155,21 @@ function FormEffectOne() {
                     className=""
                     id="contact-container"
                 >
-                    <Form name="contact" method="POST" data-netlify="true">
+                    <AlertMessage ></AlertMessage>
+                    <NetlifyForm formName="contact" formValues={formValues} preSubmit={preSubmit} postSubmit={postSubmit} >
                         <Form.Group controlId="exampleForm.ControlInput1">
-                            <Form.Control type="email" placeholder="E-mail" />
+                            <Form.Control type="email" name="email" value={formValues.email} onChange={handleChange}placeholder="E-mail"/>
                         </Form.Group>
                         <Form.Group controlId="exampleForm.ControlInput1">
-                            <Form.Control type="email" placeholder="Name" />
+                            <Form.Control type="text" name="name" value={formValues.name} onChange={handleChange} placeholder="Name"/>
                         </Form.Group>
                         <Form.Group controlId="exampleForm.ControlTextarea1">
-                            <Form.Control as="textarea" rows="20" placeholder="message"/>
+                            <Form.Control as="textarea" rows="20" name="message" value={formValues.message} onChange={handleChange} placeholder="message"/>
                         </Form.Group>
                         <Button variant="primary" type="submit">
                             Submit
                         </Button>
-                    </Form>
+                    </NetlifyForm>
                     <div id='right-side-form' className="rightSide">  
                         <div id="right-info"> 
                             <div><FontAwesomeIcon icon={faMapMarker} />   Guadalajara, Jal. | Mx</div>
@@ -127,10 +203,88 @@ function FormEffectOne() {
 
 
 function FormEffectTwo() {
+    const [alertMessage, setAlertMessage] = useState([]);
+    const [alertType, setAlertType] = useState('danger');
+    const [show, setShow] = useState(true);
+    let content = [];
+
     const columnEffect = useTrail(1, {    ////handles fade in effect on school projects
         opacity: 1,
         from: {opacity: 0},         
     });
+
+    function AlertMessage() {
+        if (!show) {
+            return (
+                <Alert className={"alertt-message"} variant={alertType} onClose={() => setShow(true)} dismissible>
+                    <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
+                    <p>
+                        {alertMessage[0]}
+                    </p>
+                    <p>
+                        {alertMessage[1]}
+                    </p>
+                    <p>
+                        {alertMessage[2]}
+                    </p>
+                </Alert>
+            );
+        } else {
+            return (
+                <div></div>
+            )
+        }
+    }
+
+    const preSubmit = async () => {
+        if (formValues.email == "") {
+            content.push("please type an email, it wont be shared to anyone");
+            setAlertType('danger');
+        }
+        if (formValues.name == "") {
+            content.push("please type name!");
+        }
+        
+        if (formValues.message == "") {
+            content.push("please write down a message");
+        }
+        if(content.length != 0) {
+            setAlertMessage(content);
+            setTimeout(() => {
+                setShow(false);
+            }, 300);
+
+            return false;
+        } else {
+            await (new Promise(resolve => setTimeout(resolve, 1000)));
+            return true;
+        }
+    }
+
+    // Post-Submit Navigate
+    const postSubmit = () => {
+        // navigate('/hooray')
+        setAlertMessage(["Mensaje enviado"]);
+        setAlertType('success');
+        setTimeout(() => {
+            setShow(false);
+            setFormValues({
+                email: '',
+                name: '',
+                message: ''
+            });
+        }, 300);
+        document.forms[0].reset();
+        document.forms[1].reset();
+    }
+
+    // Simple controlled form setup
+    const handleChange = e => setFormValues({ ...formValues, [e.target.name]: e.target.value })
+    const [formValues, setFormValues] = useState({
+        email: '',
+        name: '',
+        message: ''
+    })
 
     return(
         <div>
@@ -138,23 +292,24 @@ function FormEffectTwo() {
                 <animated.div
                     key={0}
                     style={props}
-                    className="container"
+                    className=""
                     id="contact-container"
                 >
-                    <Form>
-                    <Form.Group controlId="exampleForm.ControlInput1">
-                        <Form.Control type="email" placeholder="E-mail" />
-                    </Form.Group>
-                    <Form.Group controlId="exampleForm.ControlInput1">
-                        <Form.Control type="email" placeholder="Name" />
-                    </Form.Group>
-                    <Form.Group controlId="exampleForm.ControlTextarea1">
-                        <Form.Control as="textarea" rows="20" placeholder="message"/>
-                    </Form.Group>
-                    <Button variant="primary" type="submit">
-                        Send
-                    </Button>
-                    </Form>
+                    <AlertMessage ></AlertMessage>
+                    <NetlifyForm formName="contact" formValues={formValues} preSubmit={preSubmit} postSubmit={postSubmit} >
+                        <Form.Group controlId="exampleForm.ControlInput1">
+                            <Form.Control type="email" name="email" value={formValues.email} onChange={handleChange}placeholder="E-mail"/>
+                        </Form.Group>
+                        <Form.Group controlId="exampleForm.ControlInput1">
+                            <Form.Control type="text" name="name" value={formValues.name} onChange={handleChange} placeholder="Name"/>
+                        </Form.Group>
+                        <Form.Group controlId="exampleForm.ControlTextarea1">
+                            <Form.Control as="textarea" rows="20" name="message" value={formValues.message} onChange={handleChange} placeholder="message"/>
+                        </Form.Group>
+                        <Button variant="primary" type="submit">
+                            Submit
+                        </Button>
+                    </NetlifyForm>
                     <div id='right-side-form' className="rightSide">  
                         <div id="right-info"> 
                             <div><FontAwesomeIcon icon={faMapMarker} />   Guadalajara, Jal. | Mx</div>
