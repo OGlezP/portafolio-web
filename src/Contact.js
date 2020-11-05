@@ -50,17 +50,17 @@ function Contact(props) {
     };  
 
     const preSubmit = async () => {
-        if (formValues.email == "") {
+        if (formValues.email === "") {
             content.push("Please type an email, it wont be shared to anyone");
             setAlertType('danger');
         }
-        if (formValues.name == "") {
+        if (formValues.name === "") {
             content.push("Please type name");
         }
-        if (formValues.message == "") {
+        if (formValues.message === "") {
             content.push("Please write down a message");
         }
-        if(content.length != 0) {
+        if(content.length !== 0) {
             setHeadingMessage("Ups! There is an error, please provide the following info");
             setAlertMessage(content);
 
@@ -111,7 +111,7 @@ function Contact(props) {
                     <Alert.Heading>{headingMessage}</Alert.Heading>
                     <hr></hr>
                     <ul>
-                        {alertMessage.map(([], index) => (
+                        {alertMessage.map((alertmessage, index) => (
                             <li key={index}>{alertMessage[index]}</li>
                         ))}
                     </ul>
@@ -140,8 +140,8 @@ function Contact(props) {
             <div className="title-container">
             <div className="" style={backHeaderStyle}></div>
                 <div className="txt-wrapper">
-                    <h1 className="title-section">Contacto</h1>
-                    <p id="title-section-text">Please use the next form to get in touch, or send a direct e-mail or phone call.</p>
+                    <h1 className="title-section">Contact</h1>
+                    <p id="title-section-text">Please use the next form to get in touch, send a direct e-mail or a phone call.</p>
                 </div>
             </div>
             <div>
@@ -174,19 +174,19 @@ function Contact(props) {
                                 <div><FontAwesomeIcon icon={faEnvelope} />   orlando.gonzalez.mtz@gmail.com</div>
                                 <hr></hr>                   
                                 <div id="social-on-contact" className="text-center">
-                                    <a href={"https://github.com/OGlezP"} target="_blank">
+                                    <a href={"https://github.com/OGlezP"} target="_blank" rel="noopener noreferrer">
                                         <FontAwesomeIcon icon={faGithub}/>
                                     </a>
-                                    <a href={"https://www.linkedin.com/in/orlando-gonzalez-62762218b/"} target="_blank">
+                                    <a href={"https://www.linkedin.com/in/orlando-gonzalez-62762218b/"} target="_blank" rel="noopener noreferrer">
                                         <FontAwesomeIcon icon={faLinkedinIn}/>
                                     </a>
-                                    <a href={"https://www.instagram.com/oglezp/"} target="_blank">
+                                    <a href={"https://www.instagram.com/oglezp/"} target="_blank" rel="noopener noreferrer">
                                         <FontAwesomeIcon icon={faInstagram}/>
                                     </a>
-                                    <a href={"https://www.facebook.com/OGlezP"} target="_blank">
+                                    <a href={"https://www.facebook.com/OGlezP"} target="_blank" rel="noopener noreferrer">
                                         <FontAwesomeIcon icon={faFacebook}/>
                                     </a>
-                                    <a href={"https://codepen.io/oglezp"} target="_blank">
+                                    <a href={"https://codepen.io/oglezp"} target="_blank" rel="noopener noreferrer">
                                         <FontAwesomeIcon icon={faCodepen}/>
                                     </a>
                                 </div> 

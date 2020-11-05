@@ -5,71 +5,52 @@ import {
   useLocation,
 } from "react-router-dom";
 import './App.css';
-
 import { useTransition, animated } from 'react-spring';
 import NavElement from './components/NavElement';
 import Footer from './components/Footer';
 import Home from './Home';
 import Projects from './Projects';
 import Contact from './Contact';
-
-
 import ReactLoading from 'react-loading';
 
 function App() {
-  // let [url, setUrl] = useState('');
-  // let [prevURL, setPrevURL] = useState('');
   let [initialLoader, setInitialLoader] = useState(false);
   let [firstLoad, setFirstLoad] = useState(false);
   let [firstClickHome, setFirstClickHome] = useState(false);
   let [firstClickProjects, setFirstClickProjects] = useState(false);
   let [firstClickContact, setFirstClickContact] = useState(false);
 
-
   const location = useLocation();
   const path = location.pathname;
   const store = window.localStorage;
   let url = '';
-  let prevURL = '';
+  // let prevURL = '';
 
   url = store.getItem('url');
-  store.setItem('prevUrl', url);
+  // store.setItem('prevUrl', url);
   store.setItem('url', path);
 
   url = store.getItem('url');
-  prevURL = store.getItem('prevUrl');
-
+  // prevURL = store.getItem('prevUrl');
 
   useEffect(() => {
     setTimeout(() => {
       setFirstLoad(true);
     }, 1200);
 
-      if(url === '/Projects') {
-        // setTimeout(() => {
-        //   setFirstLoad(true);
-        // }, 1200);
-        setFirstClickProjects(true);
-        
-      }
-      if(url === '/Contact') {
-        // setTimeout(() => {
-        //   setFirstLoad(true);
-        // }, 1200);
-        setFirstClickContact(true);
-      }
-      if(url === '/') {
-        // setTimeout(() => {
-        //   setFirstLoad(true);
-        // }, 1200);
-        setFirstClickHome(true);
-      }
+    if(url === '/') {
+      setFirstClickHome(true);
+    }
+    if(url === '/Projects') {
+      setFirstClickProjects(true);
+    }
+    if(url === '/Contact') {
+      setFirstClickContact(true);
+    }
 
     setTimeout(() => {
-        setInitialLoader(true);
-      }, 1000)
-
-     
+      setInitialLoader(true);
+    }, 1000)
   }, [url]);
 
 
@@ -104,16 +85,12 @@ function App() {
                     }/>
                     <Route  path="/Projects" render={() =>
                       <Projects
-                        previousURL={prevURL}
-                        currentURL={url}
                         firstClick={firstClickProjects}
                         first={firstLoad}
                         />
                     }/>
                     <Route path="/Contact" render={() => 
                       <Contact  
-                        previousURL={prevURL}
-                        currentURL={url}
                         firstClicked={firstClickContact}
                         first={firstLoad} 
                         />
@@ -134,7 +111,5 @@ function App() {
       )
   }
 }
-
-
 
 export default App;

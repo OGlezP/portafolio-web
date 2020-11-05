@@ -2,7 +2,7 @@
     "items": [
         {
             "id": 0,
-            "src": "/img/img-projects/cosmosonidos.png",
+            "src": "/img/img-projects/freelance projects/cosmos.png",
             "title": "cosmosonidos.com",
             "brief_desc": "Rock band landing page",
             "web_techonologies": "HTML + SASS + Bootstrap + Js",
@@ -10,15 +10,15 @@
         },
         {
             "id": 1,
-            "src": "/img/img-projects/oglezp-portafolio.png",
+            "src": "/img/img-projects/freelance projects/oglez.png",
             "title": "oglez.com",
             "brief_desc": "Personal Portfolio",
-            "web_techonologies": "React Js (Hooks, Routes, Spring, Bootstrap) + SASS",
+            "web_techonologies": "React Js (hooks, router, spring, bootstrap) + SASS",
             "link": "https://oglez.com/"
         },
         {
             "id": 2,
-            "src": "/img/img-projects/iias-site.png",
+            "src": "/img/img-projects/freelance projects/iias.png",
             "title": "institutoiias.com",
             "brief_desc": "Online education landing page",
             "web_techonologies": "HTML + SASS + Bootstrap + Js + JQuery",
@@ -26,9 +26,9 @@
         },
         {
             "id": 3,
-            "src": "/img/img-projects/oglez-music-photo.png",
+            "src": "/img/img-projects/freelance projects/oglez-photo.png",
             "title": "oglez-musicphoto.com",
-            "brief_desc": "Worpdpress theme for music phography blog",
+            "brief_desc": "Worpdpress theme for music photography blog",
             "web_techonologies": "Wordpress (HTML + Css + PHP + Js)",
             "link": "http://oglez-test-hosting-com.stackstaging.com/"
         }

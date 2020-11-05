@@ -46,18 +46,13 @@ function NavElement({firstHome, firstProjects, firstContact}) {
   return (
     <Navbar className='border-bottom p-0' expanded={expandedMenu}  expand="lg" fixed="top">
       <Navbar.Brand  href="/">
-          <img src={"./img/logo/logo-oglez-portafolio.png"}></img>
+          <img src={"./img/logo/logo-oglez-portafolio.png"} alt="ogles logo"></img>
       </Navbar.Brand>
       <Navbar.Toggle 
         aria-controls="navbarNav" 
         onClick={() => setExpandedMenu(expandedMenu ? false : "expanded")}
         className={expandedMenu ? "openIcon" : "closedIcon"}
       />     
-      {/* <div aria-controls="navbarNav" onClick={() => setExpandedMenu(expandedMenu ? false : "expanded")}>
-        <div>_</div>
-        <div>_</div>
-        <div>_</div>
-      </div>       */}
       <Navbar.Collapse id="navbarNav">    
         <Nav className="ml-auto">
           <Link 

@@ -21,19 +21,19 @@ function Footer(props) {
             <div className={footerLoad ? "foot-cont" : "foot-cont footer-first-enter"}>
                 <span className="name">&copy; 2020 - OGLEZP</span>
                 <div className="social-icons-footer">
-                    <a href={"https://github.com/OGlezP"} target="_blank">
+                    <a href={"https://github.com/OGlezP"} target="_blank" rel="noopener noreferrer">
                         <FontAwesomeIcon className="icons-footer" icon={faGithub} />
                     </a>
-                    <a href={"https://www.linkedin.com/in/orlando-gonzalez-62762218b/"} target="_blank">
+                    <a href={"https://www.linkedin.com/in/orlando-gonzalez-62762218b/"} target="_blank" rel="noopener noreferrer">
                         <FontAwesomeIcon className="icons-footer" icon={faLinkedinIn}/>
                     </a>
-                    <a href={"https://www.instagram.com/oglezp/"} target="_blank">
+                    <a href={"https://www.instagram.com/oglezp/"} target="_blank" rel="noopener noreferrer">
                         <FontAwesomeIcon className="icons-footer" icon={faFacebook} />
                     </a>
-                    <a href={"https://www.facebook.com/OGlezP"} target="_blank">
+                    <a href={"https://www.facebook.com/OGlezP"} target="_blank" rel="noopener noreferrer">
                         <FontAwesomeIcon className="icons-footer" icon={faInstagram} />
                     </a>
-                    <a href={"https://codepen.io/oglezp"} target="_blank">
+                    <a href={"https://codepen.io/oglezp"} target="_blank" rel="noopener noreferrer">
                         <FontAwesomeIcon icon={faCodepen}/>
                     </a>
                 </div>

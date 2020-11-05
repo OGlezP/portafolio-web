@@ -31,28 +31,28 @@ function Home(props) {
                 <h1>Social networks</h1>
                 <Row className='social-icons m-0'>
                     <Col  className="col-icon">
-                        <a href={"https://github.com/OGlezP"} target="_blank">
+                        <a href={"https://github.com/OGlezP"} target="_blank" rel="noopener noreferrer">
                             <FontAwesomeIcon icon={faGithub}/>
                         </a>
                     </Col>
                     <Col  className="col-icon">
-                        <a href={"https://www.linkedin.com/in/orlando-gonzalez-62762218b/"} target="_blank">
+                        <a href={"https://www.linkedin.com/in/orlando-gonzalez-62762218b/"} target="_blank" rel="noopener noreferrer">
                             <FontAwesomeIcon icon={faLinkedinIn}/>
                         </a>
                         
                     </Col>
                     <Col  className="col-icon">
-                        <a href={"https://www.instagram.com/oglezp/"} target="_blank">
+                        <a href={"https://www.instagram.com/oglezp/"} target="_blank" rel="noopener noreferrer">
                             <FontAwesomeIcon icon={faInstagram}/>
                         </a>
                     </Col>
                     <Col  className="col-icon">
-                        <a href={"https://www.facebook.com/OGlezP"} target="_blank">
+                        <a href={"https://www.facebook.com/OGlezP"} target="_blank" rel="noopener noreferrer">
                             <FontAwesomeIcon icon={faFacebook}/>
                         </a>
                     </Col>
                     <Col  className="col-icon">
-                        <a href={"https://codepen.io/oglezp"} target="_blank">
+                        <a href={"https://codepen.io/oglezp"} target="_blank" rel="noopener noreferrer">
                             <FontAwesomeIcon icon={faCodepen}/>
                         </a>
                     </Col>
