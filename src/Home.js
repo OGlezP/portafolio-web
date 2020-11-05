@@ -8,7 +8,6 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faCodepen } from "@fortawesome/free-brands-svg-icons";
 
 function Home(props) {
-    console.log('home', props.first)
     const urlImgBack = "./img/oglez-background.jpg";
     
     const styleHomeBack = {
