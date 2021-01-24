@@ -24,7 +24,6 @@ function Projects(props) {
         .then(res => res.json())
         .then(
             (answer) => {
-                // setFreelanceProjects(answer.items);
                 setFreelanceProjects(answer);
             },
             (possible_error) => {
@@ -46,7 +45,6 @@ function Projects(props) {
             .then(res => res.json())
             .then(
                 (result) => {
-                    // setItems(result.items);
                     setItems(result);
                 },
                 (err) => {
