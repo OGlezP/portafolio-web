@@ -6,8 +6,10 @@ import { faCode } from "@fortawesome/free-solid-svg-icons";
 import { animated, useTrail } from 'react-spring';
 
 function Projects(props) {  
-    const url = "/school-projects.json";
-    const _URL_freelancer = "/freelance-projects.json"
+    // const url = "/school-projects.json";
+    const url = "https://api-oglez-portfolio.herokuapp.com/fcc-projects";
+    // const _URL_freelancer = "/freelance-projects.json"
+    const _URL_freelancer = "https://api-oglez-portfolio.herokuapp.com/projects";
     const [error, setError] = useState(null);
     const [items, setItems] = useState([]);
     const [freelanceError, setFreelanceError] = useState(null);
@@ -22,7 +24,8 @@ function Projects(props) {
         .then(res => res.json())
         .then(
             (answer) => {
-                setFreelanceProjects(answer.items);
+                // setFreelanceProjects(answer.items);
+                setFreelanceProjects(answer);
             },
             (possible_error) => {
                 setFreelanceError(possible_error);
@@ -43,7 +46,8 @@ function Projects(props) {
             .then(res => res.json())
             .then(
                 (result) => {
-                    setItems(result.items);
+                    // setItems(result.items);
+                    setItems(result);
                 },
                 (err) => {
                     setError(err);
@@ -58,7 +62,7 @@ function Projects(props) {
                 itemsLoade = true;
                 setTimeout(() => {
                     fetchData();
-                }, 300);
+                }, 50);
             }
         }
     
@@ -101,6 +105,8 @@ function Projects(props) {
         card.classList.toggle('hover-image');
     }  
 
+
+    /*Effect on freelance projects*/
     const columnEffectTranslated = useTrail(freelanceProjects.length, {    
         opacity: toggle ? 0 : 1,
         transform: toggle ? 'translateY(-15%)' : 'translateY(0)',
@@ -112,10 +118,14 @@ function Projects(props) {
         from: {opacity: 0},         
     });
 
+
+    /*Effect on Free code camp exercises*/
     const effectOnFreeCodeProjects =  useTrail(items.length, {    ////handles fade in effect on school projects
         opacity: showSubtitle ? 0 : 1,
-        transform: showSubtitle ? 'translateY(30%)' : 'translateY(0)',
-        from: {transform: 'translateY(30%)'},        
+        transition: 'all .3s',
+        transitionTimingFunction: 'cubic-bezier(0.08, 0.61, 1, 0.04)',
+        transform: showSubtitle ? 'translateY(60%)' : 'translateY(0)',
+        from: {transform: 'translateY(60%)'},        
     })
 
     return (
@@ -143,21 +153,16 @@ function Projects(props) {
                         </a>
                         <div className="project-info">
                             <div className="img">
-                                <img src={freelanceProjects[index].src} alt={freelanceProjects[index].title}></img>
+                                <img src={freelanceProjects[index].img.url} alt={freelanceProjects[index].title}></img>
                             </div>
                             <div className="project-web-info">
                                 <div>
-                                    {freelanceProjects[index].brief_desc}
+                                    {freelanceProjects[index].title}
                                 </div>
-                                {/* <div className="divisor"></div> */}
-                                {/* <div>
-                                    <FontAwesomeIcon icon={faGlobe }></FontAwesomeIcon>
-                                    <span>&nbsp;&nbsp;</span> {props.projects[index].title}
-                                </div> */}
                                 <hr></hr>
                                 <div>
                                     <FontAwesomeIcon icon={faCode}></FontAwesomeIcon>
-                                    <span>&nbsp;&nbsp;</span> {freelanceProjects[index].web_techonologies}
+                                    <span>&nbsp;&nbsp;</span> {freelanceProjects[index].description}
                                 </div>
                             </div>
                         </div>   
@@ -185,12 +190,12 @@ function Projects(props) {
                                     
                             <div className="project-wrapper">
                                 <div className="image">
-                                    <img src={items[index].src} alt={items[index].title}></img>
+                                    <img src={items[index].img.url} alt={items[index].title}></img>
                                 </div>
                                 <div className="proj-info-wrapper">
                                     <div className="text-inf">{items[index].title}</div>    
                                     <div className="line"></div>
-                                    <div className="text-inf"><FontAwesomeIcon icon={faCode}></FontAwesomeIcon><span> </span>{items[index].web_techonologies}</div>   
+                                    <div className="text-inf"><FontAwesomeIcon icon={faCode}></FontAwesomeIcon><span> </span>{items[index].description}</div>   
                                 </div>
                             </div>
                             
