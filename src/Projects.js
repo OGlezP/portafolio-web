@@ -7,32 +7,15 @@ import { animated, useTrail } from 'react-spring';
 
 function Projects(props) {  
     // const url = "/school-projects.json";
-    const url = "https://api-oglez-portfolio.herokuapp.com/fcc-projects";
     // const _URL_freelancer = "/freelance-projects.json"
-    const _URL_freelancer = "https://api-oglez-portfolio.herokuapp.com/projects";
-    const [error, setError] = useState(null);
-    const [items, setItems] = useState([]);
-    const [freelanceError, setFreelanceError] = useState(null);
-    const [freelanceProjects, setFreelanceProjects] = useState([]);
+
+    const freelanceProjects = props.freelanceProjectsResult;
+    const items =  props.freeCodeCampData;
     const [toggle, setToggle] = useState(true);
     const [showSubtitle, setShowSubtitle] = useState(true);
     const [hiddenSect, setHiddenSect] = useState(true);
 
-
     useEffect(() => {   /*fetch projects info*/
-        fetch(_URL_freelancer)
-        .then(res => res.json())
-        .then(
-            (answer) => {
-                setFreelanceProjects(answer);
-            },
-            (possible_error) => {
-                setFreelanceError(possible_error);
-                console.warn(freelanceError);
-            }
-        );
-
-
         (!props.first || !props.firstClick) ? (setHiddenSect(true)) : (setHiddenSect(false));
     }, []);
 
@@ -40,36 +23,19 @@ function Projects(props) {
     useEffect(() => {    //handles scroll to display school projects
         let itemsLoade = false;
 
-        const fetchData = () => {
-            fetch(url)
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    setItems(result);
-                },
-                (err) => {
-                    setError(err);
-                    console.warm(error);
-                }
-            );
-            setTimeout(() => { setShowSubtitle(false) }, 400);
-        }
-
         const handleScroll = () => {       
             if(!itemsLoade) {
                 itemsLoade = true;
-                setTimeout(() => {
-                    fetchData();
-                }, 50);
+                setTimeout(() => { setShowSubtitle(false) }, 400);
             }
         }
     
         window.addEventListener("scroll", handleScroll, { passive: true });
         return () => window.removeEventListener("scroll", handleScroll);
-    }, [error, items]);
+    }, [items]);
 
 
-    useEffect(() => { /*dilay to display column projects*/
+    useEffect(() => { /*delay to display column projects*/
         setTimeout(() => {
             setToggle(false)
         }, 800);
@@ -151,7 +117,7 @@ function Projects(props) {
                         </a>
                         <div className="project-info">
                             <div className="img">
-                                <img src={freelanceProjects[index].img.url} alt={freelanceProjects[index].title}></img>
+                                <img src={freelanceProjects[index].img.formats.thumbnail.url} alt={freelanceProjects[index].title}></img>
                             </div>
                             <div className="project-web-info">
                                 <div>
@@ -188,7 +154,7 @@ function Projects(props) {
                                     
                             <div className="project-wrapper">
                                 <div className="image">
-                                    <img src={items[index].img.url} alt={items[index].title}></img>
+                                    <img src={items[index].img.formats.thumbnail.url} alt={items[index].title}></img>
                                 </div>
                                 <div className="proj-info-wrapper">
                                     <div className="text-inf">{items[index].title}</div>    

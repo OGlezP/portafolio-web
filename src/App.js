@@ -14,26 +14,57 @@ import Contact from './Contact';
 import ReactLoading from 'react-loading';
 
 function App() {
-  let [initialLoader, setInitialLoader] = useState(false);
-  let [firstLoad, setFirstLoad] = useState(false);
-  let [firstClickHome, setFirstClickHome] = useState(false);
-  let [firstClickProjects, setFirstClickProjects] = useState(false);
-  let [firstClickContact, setFirstClickContact] = useState(false);
+  const [initialLoader, setInitialLoader] = useState(false);
+  const [firstLoad, setFirstLoad] = useState(false);
+  const [firstClickHome, setFirstClickHome] = useState(false);
+  const [firstClickProjects, setFirstClickProjects] = useState(false);
+  const [firstClickContact, setFirstClickContact] = useState(false);
+
+  const _URL_freelancer = "https://api-oglez-portfolio.herokuapp.com/projects";
+  const [freelanceProjects, setFreelanceProjects] = useState([]);
+  const _URL_freeCodeCamp = "https://api-oglez-portfolio.herokuapp.com/fcc-projects";
+  const [items, setItems] = useState([]);
 
   const location = useLocation();
   const path = location.pathname;
   const store = window.localStorage;
   let url = '';
-  // let prevURL = '';
 
   url = store.getItem('url');
-  // store.setItem('prevUrl', url);
   store.setItem('url', path);
-
   url = store.getItem('url');
-  // prevURL = store.getItem('prevUrl');
+
+
+  const fetchProjectsData = ()  => { /*fetch info from strapi API for freelance projects*/
+    fetch(_URL_freelancer)    
+      .then(res => res.json())
+      .then(
+        (answer) => {
+          setFreelanceProjects(answer);
+        },
+        (possible_error) => {
+          console.warn(possible_error);
+        }
+      );
+  }
+
+  const fetchFreeCodeProjects = () => { /*fetch freeCodeCamp projects from Strapi API*/
+    fetch(_URL_freeCodeCamp)
+      .then(res => res.json())
+      .then(
+        (data) => {
+          setItems(data);
+        },
+        (error) => {
+          console.warn(error);
+        }
+      );
+  }
 
   useEffect(() => {
+    fetchProjectsData(); /*loads info from strapi API*/
+    fetchFreeCodeProjects(); /*loads freeCodeCamp projects from Strapi API*/
+
     setTimeout(() => {
       setFirstLoad(true);
     }, 1200);
@@ -85,6 +116,8 @@ function App() {
                     }/>
                     <Route  path="/Projects" render={() =>
                       <Projects
+                        freelanceProjectsResult={freelanceProjects} /*loads info from strapi API*/
+                        freeCodeCampData={items}
                         firstClick={firstClickProjects}
                         first={firstLoad}
                         />
