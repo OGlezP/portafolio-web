@@ -21,15 +21,15 @@
             "src": "/img/img-projects/freelance projects/iias.png",
             "title": "institutoiias.com",
             "brief_desc": "Online education landing page",
-            "web_techonologies": "HTML + SASS + Bootstrap + Js + JQuery",
+            "web_techonologies": "HTML + SASS + Bootstrap + Js + jQuery",
             "link": "https://institutoiias.com/"
         },
         {
             "id": 3,
             "src": "/img/img-projects/freelance projects/oglez-photo.png",
             "title": "oglez-musicphoto.com",
-            "brief_desc": "Worpdpress theme for music photography blog",
-            "web_techonologies": "Wordpress (HTML + Css + PHP + Js)",
+            "brief_desc": "WordPress theme for music photography blog",
+            "web_techonologies": "WordPress (HTML + Css + PHP + Js)",
             "link": "http://oglezphoto.com/"
         }
     ]
