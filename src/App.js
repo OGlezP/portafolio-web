@@ -1,17 +1,13 @@
-import React, {useState, useEffect} from 'react';
-import {
-  Switch,
-  Route,
-  useLocation,
-} from "react-router-dom";
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import { Switch, Route, useLocation } from "react-router-dom";
 import { useTransition, animated } from 'react-spring';
+import ReactLoading from 'react-loading';
+
 import NavElement from './components/NavElement';
 import Footer from './components/Footer';
-import Home from './Home';
-import Projects from './Projects';
-import Contact from './Contact';
-import ReactLoading from 'react-loading';
+import Home from './components/Home';
+import Projects from './components/Projects';
+import Contact from './components/Contact';
 
 function App() {
   const [initialLoader, setInitialLoader] = useState(false);
@@ -20,47 +16,42 @@ function App() {
   const [firstClickProjects, setFirstClickProjects] = useState(false);
   const [firstClickContact, setFirstClickContact] = useState(false);
 
-  const _URL_freelancer = "/freelance-projects.json"
-  const _URL_freeCodeCamp = "/school-projects.json";
-  // const _URL_freelancer = "https://api-oglez-portfolio.herokuapp.com/projects";
+  // const _URL_freelancer = "/freelance-projects.json"
+  // const _URL_freeCodeCamp = "/school-projects.json";
+  const _URL_freelancer = "https://api-oglez-portfolio.herokuapp.com/projects";
   const [freelanceProjects, setFreelanceProjects] = useState([]);
-  // const _URL_freeCodeCamp = "https://api-oglez-portfolio.herokuapp.com/fcc-projects";
+  const _URL_freeCodeCamp = "https://api-oglez-portfolio.herokuapp.com/fcc-projects";
   const [items, setItems] = useState([]);
-
   const location = useLocation();
   const path = location.pathname;
-  const store = window.localStorage;
-  let url = '';
-
-  url = store.getItem('url');
-  store.setItem('url', path);
-  url = store.getItem('url');
 
 
-  const fetchProjectsData = ()  => { /*fetch info from strapi API for freelance projects*/
-    fetch(_URL_freelancer)    
-      .then(res => res.json())
-      .then(
-        (answer) => {
-          setFreelanceProjects(answer.items);
-        },
-        (possible_error) => {
-          console.warn(possible_error);
-        }
-      );
+  const fetchProjectsData = async () => { /*fetch info from strapi API for freelance projects*/
+    try {
+      const res = await fetch(_URL_freelancer);
+      const data = await res.json();
+      
+      if (res.status === 200) {
+        setFreelanceProjects(data);
+      }
+    }
+    catch (error) {
+      console.warn("error fetching", error)
+    }
   }
 
-  const fetchFreeCodeProjects = () => { /*fetch freeCodeCamp projects from Strapi API*/
-    fetch(_URL_freeCodeCamp)
-      .then(res => res.json())
-      .then(
-        (data) => {
-          setItems(data.items);
-        },
-        (error) => {
-          console.warn(error);
-        }
-      );
+  const fetchFreeCodeProjects = async () => { /*fetch freeCodeCamp projects from Strapi API*/
+    try {
+      const res = await fetch(_URL_freeCodeCamp);
+      const data = await res.json();
+
+      if (res.status === 200) {
+        setItems(data);
+      }
+    } 
+    catch (error) {
+      console.warn("error fetching", error);
+    }
   }
 
   useEffect(() => {
@@ -69,22 +60,23 @@ function App() {
 
     setTimeout(() => {
       setFirstLoad(true);
-    }, 1200);
+    }, 1400);
 
-    if(url === '/') {
+    if(path === '/') {
       setFirstClickHome(true);
     }
-    if(url === '/Projects') {
+    if(path === '/Projects') {
       setFirstClickProjects(true);
     }
-    if(url === '/Contact') {
+    if(path === '/Contact') {
       setFirstClickContact(true);
     }
 
     setTimeout(() => {
       setInitialLoader(true);
-    }, 1000)
-  }, [url]);
+    }, 1000);
+
+  }, [path]);
 
 
   const transitions = useTransition(location, location => location.pathname, {
@@ -119,7 +111,7 @@ function App() {
                     <Route  path="/Projects" render={() =>
                       <Projects
                         freelanceProjectsResult={freelanceProjects} /*loads info from strapi API*/
-                        freeCodeCampData={items}
+                        freeCodeCampData={items} /*loads info from strapi API*/
                         firstClick={firstClickProjects}
                         first={firstLoad}
                         />

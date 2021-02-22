@@ -114,17 +114,16 @@ function Projects(props) {
                         </a>
                         <div className="project-info">
                             <div className="img">
-                                {/* <img src={freelanceProjects[index].img.formats.thumbnail.url} alt={freelanceProjects[index].title}></img> */}
-                                <img src={freelanceProjects[index].src} alt={freelanceProjects[index].title}></img>
+                                <img src={freelanceProjects[index].img.formats.small.url} alt={freelanceProjects[index].title}></img>
                             </div>
                             <div className="project-web-info">
                                 <div>
-                                    {freelanceProjects[index].brief_desc}
+                                    {freelanceProjects[index].title}
                                 </div>
                                 <hr></hr>
                                 <div>
                                     <FontAwesomeIcon icon={faCode}></FontAwesomeIcon>
-                                    <span>&nbsp;&nbsp;</span> {freelanceProjects[index].web_techonologies}
+                                    <span>&nbsp;&nbsp;</span> {freelanceProjects[index].description}
                                 </div>
                             </div>
                         </div>   
@@ -152,13 +151,12 @@ function Projects(props) {
                                     
                             <div className="project-wrapper">
                                 <div className="image">
-                                    {/* <img src={items[index].img.formats.thumbnail.url} alt={items[index].title}></img> */}
-                                    <img src={items[index].src} alt={items[index].title}></img>
+                                    <img src={items[index].img.url} alt={items[index].title}></img>
                                 </div>
                                 <div className="proj-info-wrapper">
                                     <div className="text-inf">{items[index].title}</div>    
                                     <div className="line"></div>
-                                    <div className="text-inf"><FontAwesomeIcon icon={faCode}></FontAwesomeIcon><span> </span>{items[index].web_techonologies}</div>   
+                                    <div className="text-inf"><FontAwesomeIcon icon={faCode}></FontAwesomeIcon><span> </span>{items[index].description}</div>   
                                 </div>
                             </div>
                             

@@ -12,8 +12,7 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
 import { faCodepen } from "@fortawesome/free-brands-svg-icons";
 import { animated, useTrail } from 'react-spring';
-// import NetlifyForm from 'react-ssg-netlify-forms';
-import NetlifyForm from './components/NetlifyForm';
+import NetlifyForm from './NetlifyForm';
 
 
 function Contact(props) {

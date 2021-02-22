@@ -1,12 +1,8 @@
 import React, {useState}  from "react";
-import { useLocation } from 'react-router-dom';
-import {
-  Link
-} from "react-router-dom";
+import { useLocation, Link } from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
-import '../App.css';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function NavElement({firstHome, firstProjects, firstContact}) {
   let location = useLocation();
@@ -46,7 +42,7 @@ function NavElement({firstHome, firstProjects, firstContact}) {
   return (
     <Navbar className='border-bottom p-0' expanded={expandedMenu}  expand="lg" fixed="top">
       <Navbar.Brand  href="/">
-          <img src={"./img/logo/logo-oglez-portafolio.png"} alt="ogles logo"></img>
+          <img src={"./img/logo/logo-oglez-portafolio.png"} alt="oglez logo"></img>
       </Navbar.Brand>
       <Navbar.Toggle 
         aria-controls="navbarNav" 
