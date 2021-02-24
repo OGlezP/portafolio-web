@@ -1,32 +1,38 @@
-{
-    "items": [
-        {
-            "id": 0,
-            "src": "/img/img-projects/freeCodeCamp/quotesMachine.png",
-            "title": "Reandome Quotes",
-            "web_techonologies": "React Js + Hooks, Sass, Fetch API ",
-            "link": "https://codepen.io/oglezp/pen/yvQLBO"
-        },
-        {
-            "id": 1,
-            "src": "/img/img-projects/freeCodeCamp/calculator.png",
-            "title": "React Calculator",
-            "web_techonologies": "React Js, Sass",
-            "link": "https://codepen.io/oglezp/pen/PBExMJ"
-        },
-        {
-            "id": 2,
-            "src": "/img/img-projects/freeCodeCamp/pomodoroClock.png",
-            "title": "Pomodoro Clock",
-            "web_techonologies": "React Js, Sass",
-            "link": "https://codepen.io/oglezp/pen/GBeeMK"
-        },
-        {
-            "id": 3,
-            "src": "/img/img-projects/freeCodeCamp/simonGame.png",
-            "title": "Simon Game",
-            "web_techonologies": "jQuery, Css",
-            "link": "https://codepen.io/oglezp/pen/OZGGzZ?editors=0110"
+[
+    {
+        "id": 0,
+        "title": "Reandome Quotes",
+        "description": "React Js + Hooks, Sass, Fetch API ",
+        "link": "https://codepen.io/oglezp/pen/yvQLBO",
+        "img" : {
+            "url": "/img/img-projects/freeCodeCamp/quotesMachine.png"
         }
-    ]
-}
+    },
+    {
+        "id": 1,
+        "title": "React Calculator",
+        "description": "React Js, Sass",
+        "link": "https://codepen.io/oglezp/pen/PBExMJ",
+        "img" : {
+            "url": "/img/img-projects/freeCodeCamp/calculator.png"
+        }
+    },
+    {
+        "id": 2,
+        "title": "Pomodoro Clock",
+        "description": "React Js, Sass",
+        "link": "https://codepen.io/oglezp/pen/GBeeMK",
+        "img" : {
+            "url": "/img/img-projects/freeCodeCamp/pomodoroClock.png"
+        }
+    },
+    {
+        "id": 3,
+        "title": "Simon Game",
+        "description": "jQuery, Css",
+        "link": "https://codepen.io/oglezp/pen/OZGGzZ?editors=0110",
+        "img" : {
+            "url": "/img/img-projects/freeCodeCamp/simonGame.png"
+        }
+    }
+]

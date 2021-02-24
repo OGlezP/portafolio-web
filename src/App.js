@@ -16,11 +16,11 @@ function App() {
   const [firstClickProjects, setFirstClickProjects] = useState(false);
   const [firstClickContact, setFirstClickContact] = useState(false);
 
-  // const _URL_freelancer = "/freelance-projects.json"
-  // const _URL_freeCodeCamp = "/school-projects.json";
-  const _URL_freelancer = "https://api-oglez-portfolio.herokuapp.com/projects";
+  const _URL_freelancer = "/freelance-projects.json"
+  const _URL_freeCodeCamp = "/school-projects.json";
+  // const _URL_freelancer = "https://api-oglez-portfolio.herokuapp.com/projects";
   const [freelanceProjects, setFreelanceProjects] = useState([]);
-  const _URL_freeCodeCamp = "https://api-oglez-portfolio.herokuapp.com/fcc-projects";
+  // const _URL_freeCodeCamp = "https://api-oglez-portfolio.herokuapp.com/fcc-projects";
   const [items, setItems] = useState([]);
   const location = useLocation();
   const path = location.pathname;

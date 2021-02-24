@@ -1,36 +1,42 @@
-{
-    "items": [
-        {
-            "id": 0,
-            "src": "/img/img-projects/freelance projects/cosmos.png",
-            "title": "cosmosonidos.com",
-            "brief_desc": "Rock band landing page",
-            "web_techonologies": "HTML + SASS + Bootstrap + Js",
-            "link": "http://www.cosmosonidos.com/"
-        },
-        {
-            "id": 1,
-            "src": "/img/img-projects/freelance projects/oglez.png",
-            "title": "oglez.com",
-            "brief_desc": "Personal Portfolio",
-            "web_techonologies": "React Js (hooks, router, spring, bootstrap) + SASS",
-            "link": "https://oglez.com/"
-        },
-        {
-            "id": 2,
-            "src": "/img/img-projects/freelance projects/iias.png",
-            "title": "institutoiias.com",
-            "brief_desc": "Online education landing page",
-            "web_techonologies": "HTML + SASS + Bootstrap + Js + jQuery",
-            "link": "https://institutoiias.com/"
-        },
-        {
-            "id": 3,
-            "src": "/img/img-projects/freelance projects/oglez-photo.png",
-            "title": "oglez-musicphoto.com",
-            "brief_desc": "WordPress theme for music photography blog",
-            "web_techonologies": "WordPress (HTML + Css + PHP + Js)",
-            "link": "http://oglezphoto.com/"
+[
+    {
+        "id": 0,
+        "web_page": "cosmosonidos.com",
+        "title": "Rock band landing page",
+        "description": "HTML + SASS + Bootstrap + Js",
+        "link": "http://www.cosmosonidos.com/",
+        "img" : {
+            "url": "/img/img-projects/freelance projects/cosmos.png"
         }
-    ]
-}
+    },
+    {
+        "id": 1,
+        "web_page": "oglez.com",
+        "title": "Personal Portfolio",
+        "description": "React Js (hooks, router, spring, bootstrap) + SASS",
+        "link": "https://oglez.com/",
+        "img" : {
+            "url": "/img/img-projects/freelance projects/oglez.png"
+        }
+    },
+    {
+        "id": 2,
+        "we_page": "institutoiias.com",
+        "title": "Online education landing page",
+        "description": "HTML + SASS + Bootstrap + Js + jQuery",
+        "link": "https://institutoiias.com/",
+        "img" : {
+            "url": "/img/img-projects/freelance projects/iias.png"
+        }
+    },
+    {
+        "id": 3,
+        "we_page": "oglez-musicphoto.com",
+        "title": "WordPress theme for music photography blog",
+        "description": "WordPress (HTML + Css + PHP + Js)",
+        "link": "http://oglezphoto.com/",
+        "img" : {
+            "url": "/img/img-projects/freelance projects/oglez-photo.png"
+        }
+    }
+]

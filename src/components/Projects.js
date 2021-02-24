@@ -114,7 +114,7 @@ function Projects(props) {
                         </a>
                         <div className="project-info">
                             <div className="img">
-                                <img src={freelanceProjects[index].img.formats.small.url} alt={freelanceProjects[index].title}></img>
+                                <img src={freelanceProjects[index].img.url} alt={freelanceProjects[index].title}></img>
                             </div>
                             <div className="project-web-info">
                                 <div>
